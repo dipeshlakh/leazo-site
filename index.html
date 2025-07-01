@@ -217,7 +217,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
       headers: { Accept: "application/json" }
     }).then(response => {
       if (response.ok) {
-        window.location.href = `thank-you.html?ref=${ref}`;
+        window.location.href = `booking-confirmation.html?ref=${ref}`;
       } else {
         alert("Submission failed. Please try again or Send whatsapp message to +919202227070.");
       }
