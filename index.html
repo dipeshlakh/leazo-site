@@ -132,7 +132,8 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     <section id="book" class="px-4 pt-8 pb-16">
       <div class="container mx-auto text-center">
         <h3 class="text-3xl font-bold mb-6">Book Now</h3>
-        <form action="https://formcarry.com/s/15lg9WIB6XN" method="POST" onsubmit="sendToWhatsApp(event)" class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 space-y-4 text-left">
+        <form action="https://formcarry.com/s/15lg9WIB6XN" method="POST" onsubmit="handleFormSubmit(event)" class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 space-y-4 text-left">
+  <input type="hidden" name="booking_reference" id="booking_reference" />
   <h4 class="text-2xl font-bold mb-2 text-center">Reserve Your Console</h4>
   <p class="text-sm text-center text-gray-500 mb-4">We will revert back within 5 mins</p>
 
@@ -202,18 +203,28 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 </form>
 
 <script>
-function sendToWhatsApp(event) {
-  const name = document.querySelector('[name="name"]').value;
-  const phone = document.querySelector('[name="phone"]').value;
-  const address = document.querySelector('[name="address"]').value;
-  const game = document.querySelector('[name="game"]').value;
-  const duration = document.querySelector('[name="duration"]').value;
+  function handleFormSubmit(event) {
+    event.preventDefault();
 
-  let details = `Name: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AGame: ${game}%0ADuration: ${duration}`;
-  const url = `https://wa.me/919202227070?text=New Booking%0A${details}`;
+    const ref = 'LEAZO-' + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById("booking_reference").value = ref;
+    const form = event.target;
+    const formData = new FormData(form);
 
-  window.open(url, '_blank');
-}
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" }
+    }).then(response => {
+      if (response.ok) {
+        window.location.href = `thank-you.html?ref=${ref}`;
+      } else {
+        alert("Submission failed. Please try again or Send whatsapp message to +919202227070.");
+      }
+    }).catch(() => {
+      alert("Something went wrong. Send whatsapp message to +919202227070");
+    });
+  }
 
 function updateFields() {
   const val = document.getElementById('duration').value;
@@ -230,8 +241,9 @@ window.onload = updateFields;
     <section id="contact" class="px-4 py-16 bg-gray-100">
       <div class="container mx-auto text-center">
         <h3 class="text-3xl font-bold mb-4">Contact</h3>
+        <p>📧 Email: <a href="mailto:contact@leazo.in" class="text-blue-600">contact@leazo.in</a></p>
         <p>📞 Call/WhatsApp: <a href="https://wa.me/919202227070" class="text-blue-600">+919202227070</a></p>
-        <p>📍 Mandsaur, India</p>
+        <p>📍 Mandsaur, Madhya Pradesh, India</p>
         <p class="mt-2">Follow us: <a href="https://instagram.com/leazo.in" class="text-blue-500">@leazo.in</a></p>
       </div>
     </section>
