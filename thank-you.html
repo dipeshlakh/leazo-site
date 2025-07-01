@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leazo – Booking Confirmed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    @keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+.pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+</style>
+  </head>
+  <body class="bg-white text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="w-full fixed top-0 z-50 bg-[#FFD345] py-2 px-4 shadow-md border-b-4 border-[#393be5]">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl md:text-4xl font-extrabold italic mx-auto md:mx-0" style="font-family: 'Anton', sans-serif; letter-spacing: 3px;">LEAZO</h1>
+      </div>
+    </header>
+
+    <!-- Thank You Section -->
+    <section class="pt-[72px] px-4 py-12 text-center bg-gray-50">
+      <div class="max-w-xl mx-auto">
+        <div class="relative w-fit mx-auto mb-6">
+  <div class="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFD345] via-white to-[#393be5] blur-2xl opacity-60 scale-125 z-0"></div>
+  <img src="ps5-slim.jpg" alt="PS5 Slim" class="relative z-10 w-60 md:w-80" />
+</div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-2 text-black">Thank You for Booking!</h2>
+<p class="text-xl text-gray-800 font-semibold mb-4">Get ready to play!</p>
+        <p class="text-gray-700 text-base font-semibold mb-4">Your Booking Reference: <span id="ref-code" class="text-blue-600"></span></p>
+<p class="text-gray-700 text-lg mb-4">We’ll contact you shortly to confirm the details.</p>
+        <p class="text-gray-500 mb-1.5">Need help? You can also message us directly.</p>
+
+        <button onclick="sendBookingToWhatsApp()" class="mt-2 inline-block bg-green-600 text-white px-6 py-3 rounded-full text-sm md:text-base font-semibold hover:bg-green-700 transition">
+          Message Us on WhatsApp
+        </button>
+
+        <div class="mt-4">
+          <a href="index.html" class="inline-block bg-black text-white px-6 py-3 rounded-full text-sm md:text-base font-semibold hover:bg-gray-800 transition">← Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function sendBookingToWhatsApp() {
+        const url = "https://wa.me/919202227070?text=Hi, I just booked a PS5 on your website. Please confirm my reservation.";
+        window.open(url, '_blank');
+      }
+    </script>
+
+    <footer class="text-center py-4 text-sm text-gray-600 bg-white">
+      &copy; 2025 Leazo. All rights reserved.
+    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Run confetti
+    setTimeout(() => {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }, 300);
+
+    // Extract booking reference
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
+    if (ref) {
+      const refSpan = document.getElementById("ref-code");
+      if (refSpan) {
+        refSpan.textContent = ref;
+      }
+    }
+  });
+</script>
+</body>
+</html>
