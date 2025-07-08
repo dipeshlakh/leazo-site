@@ -63,14 +63,21 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 </script>
       </div>
     </header>
+    <!-- Auto-Detect City Bar -->
+<div id="city-bar" class="hidden bg-blue-100 text-blue-900 text-sm md:text-base py-2 px-4 text-center font-medium sticky top-12 z-40 shadow-sm">
+  📍 Detecting your location...
+</div>
+
 
     <!-- Hero Section -->
     <section id="home" class="text-center pt-6 pb-4 bg-gray-100 text-white">
       <div class="text-2xl md:text-4xl font-bold text-black mb-4 tracking-tight leading-snug">Get Your Game On – Rent the PS5 Now in Mandsaur!</div>
 <p class="text-sm md:text-lg text-red-600 font-semibold mb-2">Launch Offer: Flat 50% Off – Limited Time Only!</p>
-      <div class="flex justify-center mb-6">
-        <img src="ps5-slim.jpg" alt="PS5 Slim" class="w-full max-w-xs md:max-w-md object-contain" />
-      </div>
+      <div class="flex justify-center mb-6 relative w-fit mx-auto">
+    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFD345] via-white to-[#393be5] blur-2xl opacity-50 scale-125 z-0"></div>
+    <img src="ps5-slim.png" alt="PS5 Slim" class="w-full max-w-xs md:max-w-md object-contain relative z-10 drop-shadow" />
+
+  </div>
       <h2 class="text-2xl md:text-4xl font-bold mb-4 text-black">Kharido Mat, Leazo Karo</h2>
       <p class="text-lg md:text-2xl leading-snug tracking-tight mb-2 text-gray-700">Starting at ₹99/hour</p>
       <a href="#book" class="mt-2 mb-4 inline-block bg-black text-white px-6 py-3 rounded-full text-sm md:text-base transition duration-200 ease-in-out transform hover:scale-105 hover:bg-gray-800 font-semibold">Book Now</a>
@@ -134,27 +141,36 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
         <h3 class="text-3xl font-bold mb-6">Book Now</h3>
         <form action="https://formcarry.com/s/15lg9WIB6XN" method="POST" onsubmit="handleFormSubmit(event)" class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 space-y-4 text-left">
   <input type="hidden" name="booking_reference" id="booking_reference" />
-  <h4 class="text-2xl font-bold mb-2 text-center">Reserve Your Console</h4>
+  <h4 class="text-2xl font-bold mb-2 text-center">🎮 Get Your Game 🎮</h4>
   <p class="text-sm text-center text-gray-500 mb-4">We will revert back within 5 mins</p>
 
   <div>
-    <label class="block font-medium mb-1">Full Name</label>
-    <input type="text" name="name" required class="w-full border border-gray-300 rounded px-3 py-2" />
+    <label class="block mb-1 font-medium text-gray-700">Full Name</label>
+    <input type="text" name="name" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-yellow-400" placeholder="Enter your name" />
   </div>
 
   <div>
-    <label class="block font-medium mb-1">Phone Number</label>
-    <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" required class="w-full border border-gray-300 rounded px-3 py-2" title="Enter a valid 10-digit phone number" />
+    <label class="block mb-1 font-medium text-gray-700">Phone Number</label>
+    <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-yellow-400" placeholder="10-digit number" />
   </div>
 
   <div>
-    <label class="block font-medium mb-1">Your Address</label>
-    <input type="text" name="address" required class="w-full border border-gray-300 rounded px-3 py-2" />
+    <label class="block mb-1 font-medium text-gray-700">Your Address</label>
+    <div class="relative">
+      <input type="text" name="address" required id="addressField"
+        class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-12 text-left focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        placeholder="Complete address" />
+      <button type="button" onclick="getLocation()" title="Use my location"
+        class="absolute right-3 top-1/2 transform -translate-y-1/2">
+        <img src="location-icon.png" alt="Use location" class="w-5 h-5 opacity-70 hover:opacity-100">
+      </button>
+    </div>
   </div>
 
   <div>
-    <label class="block font-medium mb-1">Select Game</label>
-    <select name="game" required class="w-full border border-gray-300 rounded px-3 py-2">
+    <label class="block mb-1 font-medium text-gray-700">Select a Game</label>
+    <select name="game" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-yellow-400">
+      <option value="">Choose a game</option>
       <option value="GTA 5">GTA 5</option>
       <option value="Spiderman 2">Spiderman 2</option>
       <option value="God of War Ragnarok">God of War Ragnarok</option>
@@ -162,45 +178,45 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
   </div>
 
   <div>
-    <label class="block font-medium mb-1">Rental Duration</label>
-    <select name="duration" id="duration" required class="w-full border border-gray-300 rounded px-3 py-2" onchange="updateFields()">
+    <label class="block mb-1 font-medium text-gray-700">Rental Type</label>
+    <select name="duration" id="duration" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-yellow-400" onchange="updateFields()">
       <option value="hourly">Hourly</option>
       <option value="daily">Daily</option>
       <option value="weekend">Weekend</option>
     </select>
   </div>
 
+  <!-- Hourly Fields -->
   <div id="hourly-fields" class="space-y-4">
     <div>
-      <label class="block font-medium mb-1">Preferred Date</label>
-      <input type="date" name="hourly_date" class="w-full border border-gray-300 rounded px-3 py-2" />
-    </div>
-    <div>
-      <label class="block font-medium mb-1">Preferred Time Slot</label>
-      <input type="text" name="hourly_time" placeholder="e.g. 10 AM - 2 PM" class="w-full border border-gray-300 rounded px-3 py-2" />
+      <label class="block font-medium text-gray-700">Select Date</label>
+      <input type="date" name="hourly_date" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left" />
     </div>
   </div>
 
+  <!-- Daily Fields -->
   <div id="daily-fields" class="space-y-4 hidden">
     <div>
-      <label class="block font-medium mb-1">Start Date</label>
-      <input type="date" name="daily_start" class="w-full border border-gray-300 rounded px-3 py-2" />
-    </div>
-    <div>
-      <label class="block font-medium mb-1">End Date</label>
-      <input type="date" name="daily_end" class="w-full border border-gray-300 rounded px-3 py-2" />
+      <label class="block font-medium text-gray-700">Select Date</label>
+      <input type="date" name="daily_date" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left" />
     </div>
   </div>
 
+  <!-- Weekend Fields -->
   <div id="weekend-fields" class="space-y-4 hidden">
     <div>
-      <label class="block font-medium mb-1">Select Sunday</label>
-      <input type="date" name="weekend_date" class="w-full border border-gray-300 rounded px-3 py-2" />
+      <label class="block font-medium text-gray-700">Select Sunday</label>
+      <input type="date" name="weekend_date" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left" />
     </div>
   </div>
 
-  <button type="submit" class="w-full bg-black text-white py-2 rounded font-semibold hover:bg-gray-800 transition duration-200 ease-in-out transform hover:scale-105">Reserve</button>
+  <button type="submit" class="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition transform hover:scale-105">
+    Book
+  </button>
 </form>
+
+
+
 
 <script>
   function handleFormSubmit(event) {
@@ -217,7 +233,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
       headers: { Accept: "application/json" }
     }).then(response => {
       if (response.ok) {
-        window.location.href = `booking-confirmation.html?ref=${ref}`;
+        window.location.href = `thank-you.html?ref=${ref}`;
       } else {
         alert("Submission failed. Please try again or Send whatsapp message to +919202227070.");
       }
@@ -226,14 +242,91 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     });
   }
 
-function updateFields() {
-  const val = document.getElementById('duration').value;
-  document.getElementById('hourly-fields').classList.toggle('hidden', val !== 'hourly');
-  document.getElementById('daily-fields').classList.toggle('hidden', val !== 'daily');
-  document.getElementById('weekend-fields').classList.toggle('hidden', val !== 'weekend');
-}
-window.onload = updateFields;
+  function updateFields() {
+    const val = document.getElementById('duration').value;
+    document.getElementById('hourly-fields').classList.toggle('hidden', val !== 'hourly');
+    document.getElementById('daily-fields').classList.toggle('hidden', val !== 'daily');
+    document.getElementById('weekend-fields').classList.toggle('hidden', val !== 'weekend');
+  }
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(fillAddress, showError, {
+        enableHighAccuracy: true,
+        timeout: 10000
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  function fillAddress(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+      .then(response => response.json())
+      .then(data => {
+        const fullAddress = data.display_name;
+        document.getElementById("addressField").value = fullAddress;
+      })
+      .catch(() => {
+        alert("Could not fetch address. Please try again.");
+      });
+  }
+
+  function showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        alert("Permission denied. Please allow location access.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location info unavailable.");
+        break;
+      case error.TIMEOUT:
+        alert("Location request timed out.");
+        break;
+      default:
+        alert("An unknown error occurred.");
+    }
+  }
+
+  window.onload = updateFields;
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date().toISOString().split('T')[0];
+
+    // Set min date for all date inputs
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+      input.setAttribute('min', today);
+    });
+
+    // Weekend: Only allow Sundays
+    const weekendInput = document.querySelector('input[name="weekend_date"]');
+    weekendInput?.addEventListener("input", function () {
+      const date = new Date(this.value);
+      if (date.getDay() !== 0) { // 0 = Sunday
+        alert("Please select a Sunday for Weekend rental.");
+        this.value = "";
+      }
+    });
+
+    // Daily: Prevent selecting Sundays
+    ['daily_date'].forEach(id => {
+      const input = document.querySelector(`input[name="${id}"]`);
+      input?.addEventListener("input", function () {
+        const date = new Date(this.value);
+        if (date.getDay() === 0) {
+          alert("Daily rental not allowed for Sunday.\nPlease select weekend rental duration.");
+          this.value = "";
+        }
+      });
+    });
+  });
+</script>
+
+
       </div>
     </section>
 
