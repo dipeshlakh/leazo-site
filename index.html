@@ -29,7 +29,7 @@
     <!-- Header -->
     <header class="w-full fixed top-0 z-50 bg-[#FFD345] py-2 px-4 shadow-md border-b-4 border-[#393be5]">
       <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl md:text-4xl font-extrabold italic mx-auto md:mx-0" style="font-family: 'Anton', sans-serif; letter-spacing: 3px;">LEAZO</h1>
+        <a href="index.html" class="text-2xl md:text-4xl font-extrabold italic mx-auto md:mx-0" style="font-family: 'Anton', sans-serif; letter-spacing: 3px;">LEAZO</a>
         <div class="relative md:hidden absolute right-4">
   <button id="menu-toggle" class="text-lg font-medium focus:outline-none">
     ☰
@@ -39,7 +39,8 @@
     <a href="#pricing" class="block px-4 py-2 hover:bg-gray-100">Pricing</a>
     <a href="#how" class="block px-4 py-2 hover:bg-gray-100">How It Works</a>
     <a href="#book" class="block px-4 py-2 hover:bg-gray-100">Book Now</a>
-    <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+    <a href="TnC.html" class="block px-4 py-2 hover:bg-gray-100">Terms & Conditions</a>
+    <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact Us</a> 
   </div>
 </div>
 <nav class="hidden md:flex space-x-4 text-lg font-medium justify-center md:justify-end">
@@ -47,7 +48,8 @@
   <a href="#pricing" class="hover:underline">Pricing</a>
   <a href="#how" class="hover:underline">How It Works</a>
   <a href="#book" class="hover:underline">Book Now</a>
-  <a href="#contact" class="hover:underline">Contact</a>
+  <a href="TnC.html" class="hover:underline">Terms & Conditions</a>
+  <a href="#contact" class="hover:underline">Contact Us</a>
 </nav>
 <script>
 document.getElementById('menu-toggle').addEventListener('click', function() {
@@ -209,6 +211,10 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
       <input type="date" name="weekend_date" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left" />
     </div>
   </div>
+  <div class="flex items-start space-x-2 mb-4">
+  <input type="checkbox" id="agree" required class="mt-1 accent-[#393be5] w-4 h-4" />
+  <label for="agree" class="text-sm text-gray-700">I have read and agree to the <a href="TnC.html" class="text-blue-500 underline">Terms & Conditions</a></label>
+</div>
 
   <button type="submit" class="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition transform hover:scale-105">
     Book
@@ -333,7 +339,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     <!-- Contact -->
     <section id="contact" class="px-4 py-16 bg-gray-100">
       <div class="container mx-auto text-center">
-        <h3 class="text-3xl font-bold mb-4">Contact</h3>
+        <h3 class="text-3xl font-bold mb-4">Contact Us</h3>
         <p>📧 Email: <a href="mailto:contact@leazo.in" class="text-blue-600">contact@leazo.in</a></p>
         <p>📞 Call/WhatsApp: <a href="https://wa.me/919202227070" class="text-blue-600">+919202227070</a></p>
         <p>📍 Mandsaur, Madhya Pradesh, India</p>
