@@ -18,7 +18,12 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
+      body {
+    overflow-x: hidden;
+}
+
       section[id]{scroll-margin-top: 50px;
                  }
 </style>
@@ -26,7 +31,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
-  <body class="bg-white text-gray-900 font-sans pt-12">
+  <body class="bg-white text-gray-900 font-sans pt-12 overflow-x-hidden">
     <!-- Header -->
     <header class="w-full fixed top-0 z-50 bg-[#FFD345] py-2 px-4 shadow-md border-b-4 border-[#393be5]">
       <div class="container mx-auto flex justify-between items-center">
@@ -208,10 +213,13 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
       <input type="date" name="weekend_date" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-yellow-400" />
     </div>
   </div>
-  <div class="flex items-start space-x-2 mb-4">
-  <input type="checkbox" id="agree" required class="mt-1 accent-[#393be5] w-4 h-4" />
-  <label for="agree" class="text-sm text-gray-700">I have read and agree to the <a href="TnC.html" class="text-blue-500 underline">Terms & Conditions</a></label>
+ <div class="flex items-center gap-2 mb-4 whitespace-nowrap text-sm">
+  <input type="checkbox" id="agree" required class="accent-[#393be5] w-4 h-4" />
+  <label for="agree" class="text-gray-700">
+    I have read and agree to <a href="TnC.html" class="text-blue-500 underline">Terms & Conditions</a>
+  </label>
 </div>
+
 
   <button type="submit" class="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition transform hover:scale-105">
     Book
