@@ -1567,12 +1567,6 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
     form.reportValidity();
     return;
   }
-  // Ensure payment method is selected
-const paymentMethod = document.getElementById("paymentMethod").value;
-if (!paymentMethod) {
-  showToast("Select a Payment Method");
-  return;
-}
 
 
   // Gather extra booking details
@@ -1788,5 +1782,6 @@ if (!paymentMethod) {
 
   </body>
 </html>
+
 
 
