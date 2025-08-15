@@ -49,32 +49,6 @@
     
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPKZWZL4MZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JPKZWZL4MZ');
-</script>
-    <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '596729610157061');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=596729610157061&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
   <body class="bg-white text-gray-900 font-sans pt-12 overflow-x-hidden">
     <!-- Header -->
@@ -125,16 +99,16 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
   </p>
   <div class="flex justify-center mb-6 relative w-fit mx-auto">
     <div class="absolute inset-0 rounded-full bg-gradient-to-r from-[#FFD345] via-white to-[#393be5] blur-2xl opacity-40 scale-125 z-0"></div>
-    <img src="ps5-slimmobile.png" alt="PS5 Slim Mobile" class="block md:hidden w-full max-w-lg object-contain relative z-10" />
-    <img src="ps5-slimfordesktop.png" alt="PS5 Slim Desktop" class="hidden md:block w-full max-w-full object-contain relative z-10" />
+    <img src="ps5-slimmobile.avif" alt="PS5 Slim Mobile" class="block md:hidden w-full max-w-lg object-contain relative z-10" fetchpriority="high"/>
+    <img src="ps5-slimfordesktop.avif" alt="PS5 Slim Desktop" class="hidden md:block w-full max-w-full object-contain relative z-10" fetchpriority="high"/>
   </div>
   <h2 class="text-2xl md:text-4xl font-bold mb-4 text-black">Kharido Mat, Leazo Karo</h2>
   <p class="text-lg md:text-2xl leading-snug tracking-tight mb-2 text-gray-700">Starting at ₹99/hour</p>
   <a href="#booknow" class="mt-2 mb-4 inline-block bg-black text-white px-6 py-3 rounded-full text-sm md:text-base transition duration-200 ease-in-out transform hover:scale-105 hover:bg-gray-800 font-semibold">Book Now</a>
 
   <!-- Bottom corner images -->
-  <img src="gow1.png" alt="Left Corner" class="absolute bottom-0 left-0 w-36 sm:w-40 md:w-72 h-auto z-20 md:left-20">
-  <img src="f1.png" alt="Right Corner" class="absolute bottom-0 right-0 w-[9.5rem] sm:w-40 md:w-72 h-auto z-20 md:right-20">
+  <img src="gow1.avif" alt="Left Corner" class="absolute bottom-0 left-0 w-36 sm:w-40 md:w-72 h-auto z-20 md:left-20" fetchpriority="high">
+  <img src="f1.avif" alt="Right Corner" class="absolute bottom-0 right-0 w-[9.5rem] sm:w-40 md:w-72 h-auto z-20 md:right-20" fetchpriority="high">
 </section>
 
 
@@ -1793,15 +1767,15 @@ if (!paymentMethod) {
 
     <div class="grid grid-cols-3 gap-4 mb-4">
       <button type="button" class="city-btn flex flex-col items-center" data-city="Neemuch">
-        <img src="neemuch.png" class="w-13 h-13" alt="Neemuch" />
+        <img src="neemuch.png" class="w-13 h-13" alt="Neemuch" fetchpriority="high"/>
         <span class="text-lg font-medium">Neemuch</span>
       </button>
       <button type="button" class="city-btn flex flex-col items-center" data-city="Mandsaur">
-        <img src="mandsaur.png" class="w-13 h-13" alt="Mandsaur" />
+        <img src="mandsaur.png" class="w-13 h-13" alt="Mandsaur" fetchpriority="high"/>
         <span class="text-lg font-medium">Mandsaur</span>
       </button>
       <button type="button" class="city-btn flex flex-col items-center" data-city="Pratapgarh">
-        <img src="pratapgarh.png" class="w-13 h-13" alt="Pratapgarh" />
+        <img src="pratapgarh.png" class="w-13 h-13" alt="Pratapgarh" fetchpriority="high"/>
         <span class="text-lg font-medium">Pratapgarh</span>
       </button>
     </div>
