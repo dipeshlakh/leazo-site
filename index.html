@@ -1413,14 +1413,14 @@ function showToast(msg) {
   toast.textContent = msg;
 
   toast.className = `
-    fixed top-20 left-1/2 transform -translate-x-1/2 
-    bg-black text-white text-sm px-4 py-2 rounded-lg shadow-lg z-[9999]
+    fixed top-30 left-1/2 transform -translate-x-1/2 
+    bg-black text-white text-md px-4 py-2 rounded-lg shadow-lg z-[9999]
     max-w-[90%] w-fit text-center whitespace-pre-line
   `.replace(/\s+/g, ' ').trim();
 
   document.body.appendChild(toast);
 
-  setTimeout(() => toast.remove(), 4000);
+  setTimeout(() => toast.remove(), 3000);
 }
 
 document.getElementById("bookingForm").addEventListener("submit", function(e) {
@@ -1799,6 +1799,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
 
 </body>
 </html>
+
 
 
 
