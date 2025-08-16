@@ -510,7 +510,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     <!-- Each input uses floating label, rounded corners, slim height -->
     <!-- Adjusted font weight: grey placeholders normal, floating labels bold -->
     <div class="flex items-center space-x-1 mb-3">
-  <img src="location.png" alt="Location" class="h-6 w-6" loading="lazy" decoding="async">
+  <img src="location.png" alt="Location" class="h-6 w-6" >
   <h2 class="text-lg font-semibold text-gray-800">Deliver To</h2>
 </div>
     <!-- Address Input -->
@@ -669,7 +669,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     onclick="selectPayment('upi')"
     class="flex-1 payment-option border px-3 py-3 rounded-xl cursor-pointer hover:bg-gray-100 transition flex flex-col items-center justify-center gap-1"
   >
-    <img src="upi.png" alt="UPI" class="w-7 h-3.5" / loading="lazy" decoding="async">
+    <img src="upi.png" alt="UPI" class="w-7 h-3.5">
     <span class="text-md font-medium text-center leading-tight">UPI (Extra 5% Off)</span>
   </div>
 
@@ -678,7 +678,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     onclick="selectPayment('cod')"
     class="flex-1 payment-option border px-3 py-3 rounded-xl cursor-pointer hover:bg-gray-100 transition flex flex-col items-center justify-center gap-1"
   >
-    <img src="cod.png" alt="Cash on Delivery" class="w-6 h-3" / loading="lazy" decoding="async">
+    <img src="cod.png" alt="Cash on Delivery" class="w-6 h-3">
     <span class="text-md font-medium text-center leading-tight">Cash on Delivery</span>
   </div>
 </div>
@@ -1795,6 +1795,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
 
 </body>
 </html>
+
 
 
 
