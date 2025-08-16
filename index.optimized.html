@@ -1401,8 +1401,13 @@ function showToast(msg) {
   setTimeout(() => toast.remove(), 4000);
 }
 
+let formAlreadySent = false;
+
 document.getElementById("bookingForm").addEventListener("submit", function(e) {
   e.preventDefault(); // stop default page reload
+  
+  if (formAlreadySent) return; // prevent double send
+  formAlreadySent = true;
 
   const btn = document.getElementById("bookBtn");
   btn.disabled = true;
