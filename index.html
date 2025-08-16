@@ -293,28 +293,28 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
         <!-- Each game card -->
   <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center" data-multiplayer="false">
     <img src="gta5.jpg" alt="GTA 5"
-         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy" decoding="async" width="80" height="80">
+         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" >
     <input type="checkbox" name="Games[]" value="GTA 5" class="hidden game-checkbox" data-price="99" />
     <span class="text-sm block mt-1 text-gray-800">GTA 5</span>
   </label>
 
   <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center" data-multiplayer="true">
     <img src="wwe2k25.avif" alt="WWE 2K25"
-         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy" decoding="async" width="80" height="80">
+         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" >
     <input type="checkbox" name="Games[]" value="WWE 2K25" class="hidden game-checkbox" data-price="99" />
     <span class="text-sm block mt-1 text-gray-800">WWE 2K25</span>
 </label>
 
   <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center" data-multiplayer="true">
     <img src="fifa.avif" alt="FIFA (FC25)"
-         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy" decoding="async" width="80" height="80">
+         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" >
     <input type="checkbox" name="Games[]" value="FIFA (FC25)" class="hidden game-checkbox" data-price="99" />
     <span class="text-sm block mt-1 text-gray-800">FIFA (FC25)</span>
 </label>
 
   <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center" data-multiplayer="false">
     <img src="godofwar.jpg" alt="God of War"
-         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy" decoding="async" width="80" height="80">
+         class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" >
     <input type="checkbox" name="Games[]" value="God of War" class="hidden game-checkbox" data-price="99" />
     <span class="text-sm block mt-1 text-gray-800">God of War</span>
   </label>
@@ -708,7 +708,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 
 <!-- START OF UPDATED MULTISTEP BOOKING MODAL -->
 <!-- [UNCHANGED HTML ABOVE] -->
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
 let alertShown = false;
 
@@ -1626,7 +1626,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
   `;
 
   // Send to Formcarry
-  fetch("https://formcarry.com/s/15lg9WIB6XN", {
+  fetch("https://formcarry.com/s/CPgVxLB5qnD", {
     method: "POST",
     body: new FormData(form),
     headers: { 'Accept': 'application/json' }
@@ -1792,7 +1792,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+
 </body>
 </html>
 
