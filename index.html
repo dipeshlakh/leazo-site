@@ -664,7 +664,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
     <button
       type="button"
       onclick="applyCoupon()"
-      class="bg-[#FFD345] border-[1px] border-yellow-500 text-black text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:[#E0B825] box-shadow"
+      class="bg-[#FFD345] border-[1px] border-yellow-500 text-black text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:[#E0B825] box-shadow shadow-lg"
     >
       Apply
     </button>
@@ -1413,7 +1413,7 @@ function showToast(msg) {
   toast.textContent = msg;
 
   toast.className = `
-    fixed top-10 left-1/2 transform -translate-x-1/2 
+    fixed top-20 left-1/2 transform -translate-x-1/2 
     bg-black text-white text-sm px-4 py-2 rounded-lg shadow-lg z-[9999]
     max-w-[90%] w-fit text-center whitespace-pre-line
   `.replace(/\s+/g, ' ').trim();
@@ -1624,6 +1624,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
     }
     input.value = value;
   }
+      const refNumber = generateReferenceNumber();
 
   // Append all extra fields
   setHiddenField("Submission Stage", "Final Confirmed Booking");
@@ -1656,10 +1657,6 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
   })
     .then(response => {
     if (response.ok) {
-      const refNumber = generateReferenceNumber();
-
-      // Add the reference number to Formcarry submission too
-
 
       // Redirect to thank-you page with reference number in URL
       window.location.href = `booking-confirmation.html?ref=${encodeURIComponent(refNumber)}`;
@@ -1792,6 +1789,11 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
     <!-- City Selection Modal with Icons -->
 
 
+<!-- Coupon Toast -->
+<div id="couponToast" class="toast">
+  <span class="toast-icon">🎉</span>
+  <span id="couponToastMessage"></span>
+</div>
 
 
 
