@@ -63,6 +63,28 @@
   <link rel="preload" as="image" href="f1.webp">
 </head>
   <body class="bg-white text-gray-900 font-sans pt-12 overflow-x-hidden">
+    <div id="cityModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999]">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-sm text-center relative z-50">
+    <h2 class="text-xl font-semibold mb-4">Choose Your City</h2>
+
+    <div class="grid grid-cols-3 gap-4 mb-4">
+      <button type="button" class="city-btn flex flex-col items-center" data-city="Neemuch">
+        <img src="neemuch.webp" class="w-13 h-13" alt="Neemuch" >
+        <span class="text-lg font-medium">Neemuch</span>
+      </button>
+      <button type="button" class="city-btn flex flex-col items-center" data-city="Mandsaur">
+        <img src="mandsaur.webp" class="w-13 h-13" alt="Mandsaur" >
+        <span class="text-lg font-medium">Mandsaur</span>
+      </button>
+      <button type="button" class="city-btn flex flex-col items-center" data-city="Pratapgarh">
+        <img src="pratapgarh.webp" class="w-13 h-13" alt="Pratapgarh" >
+        <span class="text-lg font-medium">Pratapgarh</span>
+      </button>
+    </div>
+
+    <p class="text-xs text-gray-500">We currently serve this region only.</p>
+  </div>
+</div>
     <!-- Header -->
     <header class="w-full fixed top-0 z-50 bg-[#FFD345] py-2 px-4 shadow-md border-b-4 border-[#393be5]">
       <div class="container mx-auto flex justify-between items-center">
@@ -240,7 +262,7 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 
 <!-- START OF UPDATED MULTISTEP BOOKING MODAL -->
 <div id="bookingModal" class="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center hidden px-4">
-  <form id="bookingForm" action="https://formcarry.com/s/15lg9WIB6XN" method="POST"
+  <form id="bookingForm" action="https://formcarry.com/s/mNJ2DZIHpcR" method="POST"
   class="relative bg-white rounded-lg w-full max-w-2xl shadow-xl flex flex-col max-h-[90vh] overflow-hidden">
     <!-- Modal Header with Seamless Background -->
 <div class="sticky top-0 z-10 bg-[#FFD345] border-b-4 border-[#393be5] rounded-t-lg px-6 py-2">
@@ -957,7 +979,7 @@ if (hasMultiplayerGame && !controllerCheckbox?.checked) {
 
     
     // Send silently to Formcarry
-    fetch("https://formcarry.com/s/15lg9WIB6XN", {
+    fetch("https://formcarry.com/s/mNJ2DZIHpcR", {
       method: "POST",
       body: new FormData(form),
       headers: { 'Accept': 'application/json' }
@@ -1611,6 +1633,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
   setHiddenField("Coupon Code", couponCode);
   setHiddenField("Price Breakdown", priceBreakdown);
   setHiddenField("Total Amount", `₹${totalAmount}`);
+  setHiddenField("Reference Number", refNumber);
 
 
   // Button loading state
@@ -1636,7 +1659,7 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
       const refNumber = generateReferenceNumber();
 
       // Add the reference number to Formcarry submission too
-      setHiddenField("Reference Number", refNumber);
+
 
       // Redirect to thank-you page with reference number in URL
       window.location.href = `booking-confirmation.html?ref=${encodeURIComponent(refNumber)}`;
@@ -1767,34 +1790,14 @@ document.getElementById("bookBtn").addEventListener("click", function(e) {
     </footer>
 
     <!-- City Selection Modal with Icons -->
-<div id="cityModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999]">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-[90%] max-w-sm text-center relative z-50">
-    <h2 class="text-xl font-semibold mb-4">Choose Your City</h2>
 
-    <div class="grid grid-cols-3 gap-4 mb-4">
-      <button type="button" class="city-btn flex flex-col items-center" data-city="Neemuch">
-        <img src="neemuch.webp" class="w-13 h-13" alt="Neemuch" >
-        <span class="text-lg font-medium">Neemuch</span>
-      </button>
-      <button type="button" class="city-btn flex flex-col items-center" data-city="Mandsaur">
-        <img src="mandsaur.webp" class="w-13 h-13" alt="Mandsaur" >
-        <span class="text-lg font-medium">Mandsaur</span>
-      </button>
-      <button type="button" class="city-btn flex flex-col items-center" data-city="Pratapgarh">
-        <img src="pratapgarh.webp" class="w-13 h-13" alt="Pratapgarh" >
-        <span class="text-lg font-medium">Pratapgarh</span>
-      </button>
-    </div>
-
-    <p class="text-xs text-gray-500">We currently serve this region only.</p>
-  </div>
-</div>
 
 
 
 
 </body>
 </html>
+
 
 
 
