@@ -1287,16 +1287,9 @@ updateSummary();
     let appliedCoupon = null;
 
     function applyCoupon() {
-  // 📳 Vibrate for 200ms when Apply button is clicked
-  if (navigator.vibrate) {
-    navigator.vibrate(200);
-  }
-
-  const input = document.getElementById("couponCode").value.trim().toLowerCase();
-  const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
-
-  if (input === "leazo") {
-    appliedCoupon = "leazo";
+      const input = document.getElementById("couponCode").value.trim().toLowerCase();
+      if (input === "leazo") {
+        appliedCoupon = "leazo";
         showToast("Coupon applied!");
       } else {
         appliedCoupon = null;
@@ -1872,4 +1865,5 @@ updateSummary();
 </body>
 
 </html>
+
 
