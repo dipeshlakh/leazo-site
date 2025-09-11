@@ -129,14 +129,16 @@
         <div id="mobile-menu" class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md hidden">
           <a href="#home" class="block px-4 py-2 hover:bg-gray-100">Home</a>
           <a href="#booknow" class="block px-4 py-2 hover:bg-gray-100">Book Now</a>
-          <a href="#how" class="block px-4 py-2 hover:bg-gray-100">How It Works</a>
+      <!--<a href="#how" class="block px-4 py-2 hover:bg-gray-100">How It Works</a>-->
+          <a href="referral-portal.html" class="block px-4 py-2 hover:bg-gray-100">Refer & Earn</a>
           <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact Us</a>
         </div>
       </div>
       <nav class="hidden md:flex space-x-4 text-lg font-medium justify-center md:justify-end">
         <a href="#home" class="hover:underline">Home</a>
         <a href="#booknow" class="hover:underline">Book Now</a>
-        <a href="#how" class="hover:underline">How It Works</a>
+        <a href="referral-portal.html" class="hover:underline">Refer & Earn</a>
+    <!--<a href="#how" class="hover:underline">How It Works</a>-->
         <a href="#contact" class="hover:underline">Contact Us</a>
       </nav>
       <script>
@@ -209,8 +211,7 @@
 
           <ul class="list-disc pl-5 text-left text-black font-semibold leading-relaxed text-base">
             <li>Minimum 2 hours booking</li>
-            <li>1 Game Included</li>
-            <li><span class="text-green-600 font-semibold">Best for Free time</span></li>
+            <li><span class="text-green-600 font-semibold">2 Games Free</span></li>
           </ul>
           <div class="w-full flex overflow-hidden shadow-md border rounded-lg mt-4 border border-[#393be5]">
             <!-- Left Section -->
@@ -246,8 +247,7 @@
 
           <ul id="dayPlanDescrip" class="list-disc pl-5 text-left text-black font-semibold leading-relaxed text-base">
             <li id="dayTimeDescrip">Morning 11 AM - Evening 8 PM </li>
-            <li>1 Game Included</li>
-            <li><span class="text-green-600 font-semibold">Best for holidays gaming</span></li>
+            <li><span class="text-green-600 font-semibold">2 Games Free</span></li>
           </ul>
 
 
@@ -283,8 +283,7 @@
 
           <ul class="list-disc pl-5 text-left text-black font-semibold leading-relaxed text-base mt-2">
             <li>Night 9 PM - Morning 10 AM </li>
-            <li>1 Game Included</li>
-            <li><span class="text-green-600 font-semibold">Best for night hangouts</span></li>
+            <li><span class="text-green-600 font-semibold">2 Games Free</span></li>
           </ul>
 
           <div class="w-full flex overflow-hidden shadow-md border rounded-lg mt-4 border border-[#393be5]">
@@ -343,11 +342,11 @@
           <!-- Game Selection -->
           <div class="flex justify-between items-center mb-2">
             <label class="font-semibold text-gray-700">Select Game(s):</label>
-
+            
             <!-- Multiplayer toggle -->
             <div class="flex items-center space-x-2 text-sm">
               <span class="text-gray-600">2 Player Games</span>
-
+              
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="filterMultiplayer" class="sr-only peer">
                 <div
@@ -359,8 +358,6 @@
               </label>
             </div>
           </div>
-
-
 
 
           <div class="relative">
@@ -378,7 +375,7 @@
                 data-multiplayer="false">
                 <img src="gta5.webp" alt="GTA 5"
                   class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="GTA 5" class="hidden game-checkbox" data-price="99" />
+                <input type="checkbox" name="Games[]" value="GTA 5" class="hidden game-checkbox" data-price="49" />
                 <span class="text-sm block mt-1 text-gray-800">GTA 5</span>
               </label>
 
@@ -386,7 +383,7 @@
                 data-multiplayer="true">
                 <img src="wwe2k25.webp" alt="WWE 2K25"
                   class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="WWE 2K25" class="hidden game-checkbox" data-price="99" />
+                <input type="checkbox" name="Games[]" value="WWE 2K25" class="hidden game-checkbox" data-price="49" />
                 <span class="text-sm block mt-1 text-gray-800">WWE 2K25</span>
               </label>
 
@@ -395,7 +392,7 @@
                 <img src="fifa.webp" alt="FIFA (FC25)"
                   class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
                 <input type="checkbox" name="Games[]" value="FIFA (FC25)" class="hidden game-checkbox"
-                  data-price="99" />
+                  data-price="49" />
                 <span class="text-sm block mt-1 text-gray-800">FIFA (FC25)</span>
               </label>
 
@@ -403,7 +400,7 @@
                 data-multiplayer="false">
                 <img src="godofwar.webp" alt="God of War"
                   class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="God of War" class="hidden game-checkbox" data-price="99" />
+                <input type="checkbox" name="Games[]" value="God of War" class="hidden game-checkbox" data-price="49" />
                 <span class="text-sm block mt-1 text-gray-800">God of War</span>
               </label>
 
@@ -422,7 +419,7 @@
                   class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
                   decoding="async" width="80" height="80">
                 <input type="checkbox" name="Games[]" value="Spiderman 2" class="hidden game-checkbox"
-                  data-price="99" />
+                  data-price="49" />
                 <span class="text-sm block mt-1 text-gray-800">spiderman 2</span>
               </label>
 
@@ -520,6 +517,8 @@
               <!-- Add more game cards as needed -->
             </div>
           </div>
+
+          <p class="text-xs text-gray-500 text-center mb-1">⬅️ Swipe to see more games ➡️</p>
 
           <script>
             document.getElementById('filterMultiplayer').addEventListener('change', function () {
@@ -712,7 +711,7 @@
               </label>
               <div class="absolute inset-y-0 right-2 flex items-center translate-y-[-11.5px]">
                 <button type="button" onclick="applyCoupon()"
-                  class="bg-[#FFD345] border-[1px] border-yellow-500 text-black text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:[#E0B825] box-shadow shadow-lg">
+                  class="bg-[#FFD345] border-[1px] border-yellow-500 text-black text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:bg-yellow-500 box-shadow shadow-lg">
                   Apply
                 </button>
               </div>
@@ -721,6 +720,29 @@
                   id="couponAmountText" class="text-green-600 font-semibold">₹100</span> off
               </p>
             </div>
+
+            <div class="relative mt-4">
+  <input type="text" id="referralCodeInput" placeholder="Enter Referral Code"
+    class="peer w-full border-[1.5px] rounded-lg pr-20 px-4 py-2 text-gray-800 placeholder-transparent focus:outline-none focus:border-green-700"
+    oninput="updateSummary()" />
+  <label for="referralCodeInput"
+    class="absolute left-3 -top-2.5 bg-white px-1 text-xs text-green-600 font-medium transition-all duration-200
+    peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:bg-transparent
+    peer-placeholder-shown:font-normal
+    peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-green-600 peer-focus:bg-white peer-focus:font-medium cursor-text">
+    Referral Code
+  </label>
+  <div class="absolute inset-y-0 right-2 flex items-center translate-y-[-11.5px]">
+    <button type="button" onclick="applyReferral()"
+      class="bg-green-500 border-[1px] border-green-600 text-white text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:bg-green-600 shadow-lg">
+      Apply
+    </button>
+  </div>
+  <p class="text-sm ml-1 mt-1 mb-2 text-gray-500">
+    Enter a valid referral code (Optional)
+  </p>
+</div>
+
 
 
             <div class="relative border pl-3 p-2 rounded-lg bg-gray-50">
@@ -776,6 +798,8 @@
   <!-- START OF UPDATED MULTISTEP BOOKING MODAL -->
   <!-- [UNCHANGED HTML ABOVE] -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <script>
     let alertShown = false;
 
@@ -928,7 +952,7 @@ updateSummary();
 
         if ((selectedPlan === 'hourly' || selectedPlan === 'day' || selectedPlan === 'night') && checked.length > 1) {
           if (!alertShown) {
-            showToast("Only 1 game is free\nExtra games are chargeable");
+            showToast("Only 2 game is free\nExtra games are chargeable");
             showToastShown = true;
           }
         }
@@ -1252,16 +1276,39 @@ updateSummary();
 
     // 📋 Summary step and navigation
     function goToStep(step) {
-      for (let i = 1; i <= 3; i++) {
-        document.getElementById(`step${i}`).classList.add("hidden");
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById(`step${i}`).classList.add("hidden");
+  }
+  document.getElementById(`step${step}`).classList.remove("hidden");
+
+  if (step === 3) {
+    updateSummary();
+
+    // 🎉 Show discount popup if coupon auto-applied
+    if (appliedCoupon === "leazo") {
+      let discount = 0;
+      const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
+      const selectedCity = localStorage.getItem("selectedCity");
+
+      if (["Pratapgarh", "Neemuch"].includes(selectedCity)) {
+        if (plan === "day") discount = 400;
+        if (plan === "night") discount = 700;
+      } else {
+        if (plan === "hourly") {
+          const start = parseInt(document.getElementById("startTime")?.value || 0);
+          const end = parseInt(document.getElementById("endTime")?.value || 0);
+          const hours = end - start > 0 ? end - start : 2;
+          discount = (hours * 198) * 0.5; // 50% off hourly
+        }
+        if (plan === "day") discount = 500;
+        if (plan === "night") discount = 800;
       }
-      document.getElementById(`step${step}`).classList.remove("hidden");
 
-
-
-
-      if (step === 3) updateSummary();
+      showDiscountPopup(discount); // ✅ Your existing popup function
     }
+  }
+}
+
 
     function goBackStep() {
       const current = [1, 2, 3].find(i => !document.getElementById(`step${i}`).classList.contains("hidden"));
@@ -1287,21 +1334,99 @@ updateSummary();
     let appliedCoupon = null;
 
     function applyCoupon() {
-      const input = document.getElementById("couponCode").value.trim().toLowerCase();
-      if (input === "leazo") {
-        appliedCoupon = "leazo";
-        showToast("Coupon applied!");
-      } else {
-        appliedCoupon = null;
-        showToast("Invalid code\nUse coupon code 'LEAZO' for discount");
+  const input = document.getElementById("couponCode").value.trim().toLowerCase();
+  const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
+
+  if (input === "leazo") {
+    appliedCoupon = "leazo";
+
+    // Calculate discount amount like updateSummary()
+    let discount = 0;
+    const selectedCity = localStorage.getItem("selectedCity");
+    if (["Pratapgarh", "Neemuch"].includes(selectedCity)) {
+      if (plan === "day") discount = 400;
+      if (plan === "night") discount = 700;
+    } else {
+      if (plan === "hourly") {
+        const start = parseInt(document.getElementById("startTime")?.value || 0);
+        const end = parseInt(document.getElementById("endTime")?.value || 0);
+        const hours = end - start > 0 ? end - start : 2;
+        discount = (hours * 198) * 0.5; // 50% off hourly
       }
-      updateSummary();
+      if (plan === "day") discount = 500;
+      if (plan === "night") discount = 800;
     }
+
+    // Show popup with confetti 🎉
+    showDiscountPopup(discount);
+
+  } else {
+    appliedCoupon = null;
+    showToast("Invalid code\nUse coupon code 'LEAZO' for discount");
+  }
+  updateSummary();
+}
+
+
+    let appliedReferral = null;
+    let referralCodesCache = {};
+
+async function loadReferralCodes() {
+  try {
+    const webappURL = "https://script.google.com/macros/s/AKfycbx-J5qod-YnxNoy3mBQ-_BKQKvtQ7UnnG4sqSkIN1r165P3dB1wKd9zblBqRmNdvDkXKw/exec"; // <-- replace with your Apps Script URL
+    const res = await fetch(webappURL + "?all=1");
+    const data = await res.json();
+    if (data.ok && data.codes) {
+      referralCodesCache = data.codes;
+      console.log("Referral codes loaded:", referralCodesCache);
+    }
+  } catch (err) {
+    console.error("Failed to load referral codes", err);
+  }
+}
+
+// Load codes when page is ready
+document.addEventListener("DOMContentLoaded", loadReferralCodes);
+
+function applyReferral() {
+  const input = document.getElementById("referralCodeInput").value.trim().toLowerCase();
+  const selectedPlan = localStorage.getItem("selectedRentalPlan") || "hourly";
+
+  if (!input) {
+    showToast("Enter a referral code");
+    return;
+  }
+
+  if (selectedPlan === "hourly") {
+    appliedReferral = null;
+    referralDiscount = 0;
+    showToast("Referral discount apply only on day and night plan");
+    updateSummary();
+    return;
+  }
+
+if (referralCodesCache[input]) {
+  appliedReferral = input;
+  referralDiscount = referralCodesCache[input];
+  showDiscountPopup(referralDiscount); // <-- new popup with confetti
+} else {
+  appliedReferral = null;
+  referralDiscount = 0;
+  showToast("Invalid referral code");
+}
+
+
+  updateSummary();
+}
+
+
+
+
 
     const cityDeliveryPrices = {
       "Neemuch": 99,
       "Pratapgarh": 99,
-      "Mandsaur": 99
+      "Mandsaur": 49
     };
 
     function updateSummary() {
@@ -1373,16 +1498,20 @@ updateSummary();
 
 
       // Sort by price descending to find the costliest
+      // Sort by price descending so free ones are the costliest
       selectedGameData.sort((a, b) => b.price - a.price);
 
       selectedGameData.forEach((game, index) => {
-        if (index === 0) {
+        if (index < 2) {
+          // First 2 games free
           gameBreakdown.push(`<div>Game: ${game.name} <span class="line-through text-gray-500">₹${game.price}</span> <span class="text-green-600">FREE</span></div>`);
         } else {
+          // From 3rd onwards, charge
           gameTotal += game.price;
           gameBreakdown.push(`<div>Extra Game: ${game.name} – ₹${game.price}</div>`);
         }
       });
+
 
 
       // Coupon discount
@@ -1400,6 +1529,11 @@ updateSummary();
         }
       }
 
+      let referralDiscount = window.referralDiscount || 0;
+
+
+
+
 
       let deliveryCharge = 99; // default fallback
       selectedCity = localStorage.getItem("selectedCity");
@@ -1408,7 +1542,7 @@ updateSummary();
         deliveryCharge = cityDeliveryPrices[selectedCity];
       }
       const subtotal = planPrice + controllerCharge + gameTotal + deliveryCharge;
-      const afterCoupon = subtotal - couponDiscount;
+      const afterCoupon = subtotal - couponDiscount - referralDiscount;
 
       // UPI discount
       let upiDiscount = 0;
@@ -1454,6 +1588,7 @@ updateSummary();
     ${controllerCharge > 0 ? `<div>Extra Controller: ₹${controllerCharge}</div>` : ''}
     <div>Delivery, Installation & Pick Up: ₹${deliveryCharge}</div>
     ${couponDiscount > 0 ? `<div class='text-green-600'>Coupon Discount: -₹${couponDiscount}</div>` : ''}
+    ${referralDiscount > 0 ? `<div class='text-green-600'>Referral Discount: -₹${referralDiscount}</div>` : ''}
     ${upiDiscount > 0 ? `<div class='text-green-600'>UPI Discount (10%): -₹${upiDiscount}</div>` : ''}
     <div class='font-medium text-lg mt-2'>${totalLine}</div>
   `;
@@ -1461,6 +1596,50 @@ updateSummary();
       document.getElementById("bookingSummary").innerHTML = bookingDetailsHTML;
       document.getElementById("summaryBreakdown").innerHTML = summaryHTML;
     }
+
+    function showDiscountPopup(amount) {
+  const popup = document.getElementById("discountPopup");
+  const content = document.getElementById("discountPopupContent");
+  const discountText = document.getElementById("discountAmount");
+
+  discountText.textContent = `₹${amount}`;
+  popup.classList.remove("hidden");
+
+  // Animate both overlay and content
+  setTimeout(() => {
+    popup.classList.remove("opacity-0");
+    popup.classList.add("opacity-100");
+
+    content.classList.remove("opacity-0", "scale-90");
+    content.classList.add("opacity-100", "scale-100");
+  }, 20);
+
+  // Confetti 🎉
+  confetti({
+    particleCount: 60,
+    spread: 70,
+    origin: { y: 0.6 },
+    ticks: 140  
+  });
+
+  // Auto hide after 1.8s
+  setTimeout(() => hideDiscountPopup(), 1800);
+
+  // Manual dismiss
+  popup.onclick = hideDiscountPopup;
+
+  function hideDiscountPopup() {
+    popup.classList.remove("opacity-100");
+    popup.classList.add("opacity-0");
+
+    content.classList.remove("opacity-100", "scale-100");
+    content.classList.add("opacity-0", "scale-90");
+
+    setTimeout(() => popup.classList.add("hidden"), 300);
+  }
+}
+
+
 
 
     function showToast(msg) {
@@ -1669,6 +1848,7 @@ updateSummary();
       const controllerSelected = document.getElementById("addController")?.checked ? "Yes" : "No";
       const twoPlayerToggle = document.getElementById("filterMultiplayer")?.checked ? "On" : "Off";
       const couponCode = document.getElementById("couponCode")?.value || "None";
+      const referralCodeInput = document.getElementById("referralCodeInput")?.value || "None";
 
       // Read breakdown & total from Step 3
       const priceBreakdown = document.getElementById("summaryBreakdown")?.innerText || "";
@@ -1693,6 +1873,7 @@ updateSummary();
       setHiddenField("Extra Controller Selected", controllerSelected);
       setHiddenField("2 Player Toggle", twoPlayerToggle);
       setHiddenField("Coupon Code", couponCode);
+      setHiddenField("Referral Code", referralCodeInput);
       setHiddenField("Price Breakdown", priceBreakdown);
       setHiddenField("Total Amount", `₹${totalAmount}`);
       setHiddenField("Reference Number", refNumber);
@@ -1737,47 +1918,143 @@ updateSummary();
 
 
 
-
-
   </script>
 
   <!-- END OF UPDATED MULTISTEP BOOKING MODAL -->
+<!-- Trust Section (2 columns on mobile, 3 on desktop) -->
+<!-- Trust Section (with Cash on Delivery) -->
+<section class="bg-gradient-to-r from-yellow-100 via-white to-yellow-50 py-12 px-6">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
+      Why Gamers Trust <span class="text-yellow-500">Leazo</span>
+    </h2>
 
-  <!-- How It Works -->
-  <section id="how" class="px-4 pt-8 pb-16 bg-gray-50">
-    <div class="container mx-auto text-center">
-      <h3 class="text-2xl md:text-3xl font-bold mb-6">How It Works</h3>
-      <div class="space-y-8 text-center max-w-xl mx-auto text-base leading-relaxed font-medium">
-        <div>
-          <h4 class="text-xl font-semibold text-blue-700 mb-2">Step 1</h4>
-          <p class="text-gray-700">Select Plan, Game, Date and Time</p>
-        </div>
-        <div>
-          <h4 class="text-xl font-semibold text-blue-700 mb-2">Step 2</h4>
-          <p class="text-gray-700">Enter Delivery Address</p>
-        </div>
-        <div>
-          <h4 class="text-xl font-semibold text-blue-700 mb-2">Step 3</h4>
-          <p class="text-gray-700">Place your Booking</p>
-        </div>
-        <div>
-          <h4 class="text-xl font-semibold text-blue-700 mb-2">Step 4</h4>
-          <p class="text-gray-700">Delivery & Installation will be Done</p>
-        </div>
+    <div class="grid gap-6 grid-cols-2 md:grid-cols-4">
+      <!-- Cash on Delivery -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+        <div class="bg-yellow-100 p-4 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+    d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+</svg>
 
+        </div>
+        <h3 class="text-xl font-semibold">Cash on Delivery</h3>
+        <p class="hidden md:block text-gray-600 mt-2">Pay easily with COD — no need for online transactions.</p>
       </div>
-  </section>
 
+      <!-- Home Delivery -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+        <div class="bg-yellow-100 p-4 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 7h13v10H3V7zm13 0l5 5v5h-5V7zM5 17a2 2 0 104 0 2 2 0 00-4 0zm10 0a2 2 0 104 0 2 2 0 00-4 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold">Home Delivery</h3>
+        <p class="hidden md:block text-gray-600 mt-2">Get your PS5 and games delivered right to your doorstep, hassle-free.</p>
+      </div>
 
+      
 
+      <!-- Affordable Price -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+        <div class="bg-yellow-100 p-4 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+    d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+</svg>
 
+        </div>
+        <h3 class="text-xl font-semibold">Affordable Price</h3>
+        <p class="hidden md:block text-gray-600 mt-2">We guarantee the best rental prices — play more, spend less.</p>
+      </div>
+      <!-- No Deposit -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+              <div class="bg-yellow-100 p-4 rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
+      </svg>
 
+              </div>
+              <h3 class="text-xl font-semibold">No Deposit</h3>
+              <p class="hidden md:block text-gray-600 mt-2">Play without worries — we don’t ask for any security deposits.</p>
+            </div>
+      
 
-
-
-
+    </div>
   </div>
-  </section>
+</section>
+
+<!--
+//How It Works Section
+<section id="how" class="bg-gray-50 py-12 px-6">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-10">How It Works</h2>
+
+    <div class="grid gap-8 md:grid-cols-3">
+
+      //Step 1
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">1. Choose Your Plan</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-11 w-11 text-blue-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+  </svg>
+        
+        <p class="text-gray-600">Select from Hourly, Day, or Night plans that suit your gaming needs.</p>
+      </div>
+
+      //Step 2
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">2. Select Games</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+    d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003
+       0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643
+       48.39 48.39 0 0 1-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349
+       c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57
+       a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003
+       c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58
+       a48.1 48.1 0 0 0 5.427-.63 48.05 48.05 0 0 0 .582-4.717.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349
+       -1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663
+       48.422 48.422 0 0 0-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 0 1-.61-.58v0Z" />
+</svg>
+
+
+        
+        <p class="text-gray-600">Pick your favorite PS5 games — first 2 are FREE, extra ones at a small cost.</p>
+      </div>
+
+      //Step 3 
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold mb-2">3. Get It Delivered</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+    d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12">
+  </path>
+</svg>
+
+
+        <p class="text-gray-600">We deliver PS5 and accessories to your doorstep. Play, enjoy, return easily!</p>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+
+<!-- Google Reviews Section -->
+<section id="reviews" class="px-4 py-12 bg-gray-50">
+  <div class="container mx-auto text-center">
+
+    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-3e6e3292-f68b-4ff3-b50d-7b4a2af4c1df" data-elfsight-app-lazy></div>
+  </div>
+</section>
+
+
 
   <section id="contact" class="w-full bg-black py-10">
     <div class="max-w-5xl mx-auto px-6">
@@ -1804,6 +2081,7 @@ updateSummary();
         <div>
           <h2 class="text-xl font-bold text-white mb-4">Quick Links</h2>
           <ul class="space-y-2">
+            <li><a href="referral-portal.html" class="text-gray-300 hover:text-[#FFD345] transition">Refer & Earn</a></li>
             <li><a href="TnC.html" class="text-gray-300 hover:text-[#FFD345] transition">Terms & Conditions</a></li>
             <li><a href="privacy-policy.html" class="text-gray-300 hover:text-[#FFD345] transition">Privacy Policy</a>
             </li>
@@ -1830,6 +2108,7 @@ updateSummary();
 
         <h2 class="text-xl font-bold text-white mt-10 mb-4">Quick Links</h2>
         <div class="flex flex-col items-center gap-2">
+          <a href="referral-portal.html" class="text-gray-300 hover:text-[#FFD345] transition">Refer & Earn</a>
           <a href="TnC.html" class="text-gray-300 hover:text-[#FFD345] transition">Terms & Conditions</a>
           <a href="privacy-policy.html" class="text-gray-300 hover:text-[#FFD345] transition">Privacy Policy</a>
           <a href="cancellation&refund-policy.html" class="text-gray-300 hover:text-[#FFD345] transition">Cancellation &
@@ -1858,6 +2137,24 @@ updateSummary();
 
   <!-- City Selection Modal with Icons -->
 
+<!-- Discount Popup -->
+<!-- Discount Popup Modal -->
+<!-- Discount Popup Modal -->
+<div id="discountPopup" 
+  class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 
+         opacity-0 transition-opacity duration-300 ease-out">
+  <div id="discountPopupContent" 
+    class="bg-white px-6 py-4 rounded-2xl shadow-xl text-center max-w-sm 
+           opacity-0 scale-90 transition-all duration-300 ease-out">
+    <h2 class="text-2xl font-bold text-blue-600 mb-1">🎉</h2>
+    <h2 class="text-xl font-bold text-blue-500 ">Discount Applied!</h2>
+    <p class="text-lg font-medium ">You Saved </p>
+    <p id="discountAmount" class="text-xl text-green-600 font-bold mb-1"></p>
+  </div>
+</div>
+
+
+<!-- Discount Popup -->
 
 
 
@@ -1865,5 +2162,3 @@ updateSummary();
 </body>
 
 </html>
-
-
