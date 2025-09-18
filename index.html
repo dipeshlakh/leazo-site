@@ -78,7 +78,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -129,7 +129,7 @@
         <div id="mobile-menu" class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md hidden">
           <a href="#home" class="block px-4 py-2 hover:bg-gray-100">Home</a>
           <a href="#booknow" class="block px-4 py-2 hover:bg-gray-100">Book Now</a>
-      <!--<a href="#how" class="block px-4 py-2 hover:bg-gray-100">How It Works</a>-->
+          <!--<a href="#how" class="block px-4 py-2 hover:bg-gray-100">How It Works</a>-->
           <a href="referral-portal.html" class="block px-4 py-2 hover:bg-gray-100">Refer & Earn</a>
           <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact Us</a>
         </div>
@@ -138,7 +138,7 @@
         <a href="#home" class="hover:underline">Home</a>
         <a href="#booknow" class="hover:underline">Book Now</a>
         <a href="referral-portal.html" class="hover:underline">Refer & Earn</a>
-    <!--<a href="#how" class="hover:underline">How It Works</a>-->
+        <!--<a href="#how" class="hover:underline">How It Works</a>-->
         <a href="#contact" class="hover:underline">Contact Us</a>
       </nav>
       <script>
@@ -198,7 +198,7 @@
 
 
         <div data-plan="hourly"
-          class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform md:hover:scale-105 shadow-sm border-b-4 border-black">
+          class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform hover:scale-105 shadow-sm border-b-4 border-black">
           <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">50% OFF</div>
           <h4 class="text-3xl font-semibold">🕒<br>Hourly Plan</h4>
           <p class="text-xl font-semibold text-gray-500 line-through">₹199</p>
@@ -234,7 +234,7 @@
 
 
         <div data-plan="day"
-          class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform md:hover:scale-105 shadow-sm border-b-4 border-black">
+          class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform hover:scale-105 shadow-sm border-b-4 border-black">
           <div id="dayPlanBadge"
             class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">₹500 OFF</div>
           <h2 class="text-3xl font-semibold">☀️<br>Day Plan</h2>
@@ -271,7 +271,7 @@
 
         </div>
         <div data-plan="night"
-          class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform md:hover:scale-105 shadow-sm border-b-4 border-black">
+          class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform hover:scale-105 shadow-sm border-b-4 border-black">
           <div id="nightPlanBadge"
             class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">₹800 OFF</div>
           <h4 class="text-3xl font-semibold">🌃<br>Night Plan</h4>
@@ -342,11 +342,11 @@
           <!-- Game Selection -->
           <div class="flex justify-between items-center mb-2">
             <label class="font-semibold text-gray-700">Select Game(s):</label>
-            
+
             <!-- Multiplayer toggle -->
             <div class="flex items-center space-x-2 text-sm">
               <span class="text-gray-600">2 Player Games</span>
-              
+
               <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="filterMultiplayer" class="sr-only peer">
                 <div
@@ -699,7 +699,7 @@
           <div>
 
             <div class="relative">
-              <input type="text" id="couponCode" placeholder="Enter Coupon Code" 
+              <input type="text" id="couponCode" placeholder="Enter Coupon Code"
                 class="peer w-full border-[1.5px] rounded-lg pr-20 px-4 py-2 text-gray-800 placeholder-transparent focus:outline-none focus:border-blue-700"
                 oninput="updateSummary()" />
               <label for="couponCode"
@@ -722,26 +722,26 @@
             </div>
 
             <div class="relative mt-4">
-  <input type="text" id="referralCodeInput" placeholder="Enter Referral Code"
-    class="peer w-full border-[1.5px] rounded-lg pr-20 px-4 py-2 text-gray-800 placeholder-transparent focus:outline-none focus:border-green-700"
-    oninput="updateSummary()" />
-  <label for="referralCodeInput"
-    class="absolute left-3 -top-2.5 bg-white px-1 text-xs text-green-600 font-medium transition-all duration-200
+              <input type="text" id="referralCodeInput" placeholder="Enter Gift Card Code"
+                class="peer w-full border-[1.5px] rounded-lg pr-20 px-4 py-2 text-gray-800 placeholder-transparent focus:outline-none focus:border-green-700"
+                oninput="updateSummary()" />
+              <label for="referralCodeInput"
+                class="absolute left-3 -top-2.5 bg-white px-1 text-xs text-green-600 font-medium transition-all duration-200
     peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:bg-transparent
     peer-placeholder-shown:font-normal
     peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-green-600 peer-focus:bg-white peer-focus:font-medium cursor-text">
-    Referral Code
-  </label>
-  <div class="absolute inset-y-0 right-2 flex items-center translate-y-[-11.5px]">
-    <button type="button" onclick="applyReferral()"
-      class="bg-green-500 border-[1px] border-green-600 text-white text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:bg-green-600 shadow-lg">
-      Apply
-    </button>
-  </div>
-  <p class="text-sm ml-1 mt-1 mb-2 text-gray-500">
-    Enter a valid referral code (Optional)
-  </p>
-</div>
+                Gift Card 
+              </label>
+              <div class="absolute inset-y-0 right-2 flex items-center translate-y-[-11.5px]">
+                <button type="button" onclick="applyReferral()"
+                  class="bg-green-500 border-[1px] border-green-600 text-white text-sm font-medium px-2 py-0.5 pb-1 rounded-md hover:bg-green-600 shadow-lg">
+                  Redeem
+                </button>
+              </div>
+              <p class="text-sm ml-1 mt-1 mb-2 text-gray-500">
+                (Optional)
+              </p>
+            </div>
 
 
 
@@ -775,13 +775,13 @@
 
 
 
-          <div class="sticky bottom-0 bg-white px-4 py-3 border-t border-gray-300 -mx-4 pb-2">
-            <div class="flex justify-between items-center">
-              <p class="text-xl font-bold text-gray-800 ml-4">
+          <div class="sticky bottom-0 bg-white px-4 py-3 border-t border-gray-300">
+            <div class="flex flex-wrap justify-between items-center gap-3">
+              <p class="text-lg md:text-xl font-bold text-gray-800 flex-shrink">
                 Total: ₹<span id="totalAmount">0</span>
               </p>
               <button type="submit" id="bookBtn"
-                class="bg-blue-600 text-white font-medium px-5 py-2 rounded-xl hover:bg-blue-700 transition">
+                class="bg-blue-600 text-white font-medium px-5 py-2 rounded-xl hover:bg-blue-700 transition w-full sm:w-auto">
                 Book Now
               </button>
             </div>
@@ -920,9 +920,9 @@
       setupFlatpickr();
       updateDeliveryTime(); // Handle rounding for today
       // Auto-apply LEAZO coupon
-document.getElementById("couponCode").value = "LEAZO";
-appliedCoupon = "leazo";
-updateSummary();
+      document.getElementById("couponCode").value = "LEAZO";
+      appliedCoupon = "leazo";
+      updateSummary();
 
     }
 
@@ -1002,10 +1002,10 @@ updateSummary();
 
         goToStep(2);
         // 👇 Auto-focus first input in Step 2 (Address)
-   setTimeout(() => {
-     const firstInput = document.querySelector('#step2 input');
-     if (firstInput) firstInput.focus();
-   }, 300); // small delay ensures step is visible
+        setTimeout(() => {
+          const firstInput = document.querySelector('#step2 input');
+          if (firstInput) firstInput.focus();
+        }, 300); // small delay ensures step is visible
       });
 
       document.getElementById("nextToStep3").addEventListener("click", () => {
@@ -1276,38 +1276,38 @@ updateSummary();
 
     // 📋 Summary step and navigation
     function goToStep(step) {
-  for (let i = 1; i <= 3; i++) {
-    document.getElementById(`step${i}`).classList.add("hidden");
-  }
-  document.getElementById(`step${step}`).classList.remove("hidden");
-
-  if (step === 3) {
-    updateSummary();
-
-    // 🎉 Show discount popup if coupon auto-applied
-    if (appliedCoupon === "leazo") {
-      let discount = 0;
-      const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
-      const selectedCity = localStorage.getItem("selectedCity");
-
-      if (["Pratapgarh", "Neemuch"].includes(selectedCity)) {
-        if (plan === "day") discount = 400;
-        if (plan === "night") discount = 700;
-      } else {
-        if (plan === "hourly") {
-          const start = parseInt(document.getElementById("startTime")?.value || 0);
-          const end = parseInt(document.getElementById("endTime")?.value || 0);
-          const hours = end - start > 0 ? end - start : 2;
-          discount = (hours * 198) * 0.5; // 50% off hourly
-        }
-        if (plan === "day") discount = 500;
-        if (plan === "night") discount = 800;
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById(`step${i}`).classList.add("hidden");
       }
+      document.getElementById(`step${step}`).classList.remove("hidden");
 
-      showDiscountPopup(discount); // ✅ Your existing popup function
+      if (step === 3) {
+        updateSummary();
+
+        // 🎉 Show discount popup if coupon auto-applied
+        if (appliedCoupon === "leazo") {
+          let discount = 0;
+          const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
+          const selectedCity = localStorage.getItem("selectedCity");
+
+          if (["Pratapgarh", "Neemuch"].includes(selectedCity)) {
+            if (plan === "day") discount = 400;
+            if (plan === "night") discount = 700;
+          } else {
+            if (plan === "hourly") {
+              const start = parseInt(document.getElementById("startTime")?.value || 0);
+              const end = parseInt(document.getElementById("endTime")?.value || 0);
+              const hours = end - start > 0 ? end - start : 2;
+              discount = (hours * 198) * 0.5; // 50% off hourly
+            }
+            if (plan === "day") discount = 500;
+            if (plan === "night") discount = 800;
+          }
+
+          showDiscountPopup(discount); // ✅ Your existing popup function
+        }
+      }
     }
-  }
-}
 
 
     function goBackStep() {
@@ -1334,90 +1334,90 @@ updateSummary();
     let appliedCoupon = null;
 
     function applyCoupon() {
-  const input = document.getElementById("couponCode").value.trim().toLowerCase();
-  const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
+      const input = document.getElementById("couponCode").value.trim().toLowerCase();
+      const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
 
-  if (input === "leazo") {
-    appliedCoupon = "leazo";
+      if (input === "leazo") {
+        appliedCoupon = "leazo";
 
-    // Calculate discount amount like updateSummary()
-    let discount = 0;
-    const selectedCity = localStorage.getItem("selectedCity");
-    if (["Pratapgarh", "Neemuch"].includes(selectedCity)) {
-      if (plan === "day") discount = 400;
-      if (plan === "night") discount = 700;
-    } else {
-      if (plan === "hourly") {
-        const start = parseInt(document.getElementById("startTime")?.value || 0);
-        const end = parseInt(document.getElementById("endTime")?.value || 0);
-        const hours = end - start > 0 ? end - start : 2;
-        discount = (hours * 198) * 0.5; // 50% off hourly
+        // Calculate discount amount like updateSummary()
+        let discount = 0;
+        const selectedCity = localStorage.getItem("selectedCity");
+        if (["Pratapgarh", "Neemuch"].includes(selectedCity)) {
+          if (plan === "day") discount = 400;
+          if (plan === "night") discount = 700;
+        } else {
+          if (plan === "hourly") {
+            const start = parseInt(document.getElementById("startTime")?.value || 0);
+            const end = parseInt(document.getElementById("endTime")?.value || 0);
+            const hours = end - start > 0 ? end - start : 2;
+            discount = (hours * 198) * 0.5; // 50% off hourly
+          }
+          if (plan === "day") discount = 500;
+          if (plan === "night") discount = 800;
+        }
+
+        // Show popup with confetti 🎉
+        showDiscountPopup(discount);
+
+      } else {
+        appliedCoupon = null;
+        showToast("Invalid code\nUse coupon code 'LEAZO' for discount");
       }
-      if (plan === "day") discount = 500;
-      if (plan === "night") discount = 800;
+      updateSummary();
     }
-
-    // Show popup with confetti 🎉
-    showDiscountPopup(discount);
-
-  } else {
-    appliedCoupon = null;
-    showToast("Invalid code\nUse coupon code 'LEAZO' for discount");
-  }
-  updateSummary();
-}
 
 
     let appliedReferral = null;
     let referralCodesCache = {};
 
-async function loadReferralCodes() {
-  try {
-    const webappURL = "https://script.google.com/macros/s/AKfycbx-J5qod-YnxNoy3mBQ-_BKQKvtQ7UnnG4sqSkIN1r165P3dB1wKd9zblBqRmNdvDkXKw/exec"; // <-- replace with your Apps Script URL
-    const res = await fetch(webappURL + "?all=1");
-    const data = await res.json();
-    if (data.ok && data.codes) {
-      referralCodesCache = data.codes;
-      console.log("Referral codes loaded:", referralCodesCache);
+    async function loadReferralCodes() {
+      try {
+        const webappURL = "https://script.google.com/macros/s/AKfycbx-J5qod-YnxNoy3mBQ-_BKQKvtQ7UnnG4sqSkIN1r165P3dB1wKd9zblBqRmNdvDkXKw/exec"; // <-- replace with your Apps Script URL
+        const res = await fetch(webappURL + "?all=1");
+        const data = await res.json();
+        if (data.ok && data.codes) {
+          referralCodesCache = data.codes;
+          console.log("Referral codes loaded:", referralCodesCache);
+        }
+      } catch (err) {
+        console.error("Failed to load referral codes", err);
+      }
     }
-  } catch (err) {
-    console.error("Failed to load referral codes", err);
-  }
-}
 
-// Load codes when page is ready
-document.addEventListener("DOMContentLoaded", loadReferralCodes);
+    // Load codes when page is ready
+    document.addEventListener("DOMContentLoaded", loadReferralCodes);
 
-function applyReferral() {
-  const input = document.getElementById("referralCodeInput").value.trim().toLowerCase();
-  const selectedPlan = localStorage.getItem("selectedRentalPlan") || "hourly";
+    function applyReferral() {
+      const input = document.getElementById("referralCodeInput").value.trim().toLowerCase();
+      const selectedPlan = localStorage.getItem("selectedRentalPlan") || "hourly";
 
-  if (!input) {
-    showToast("Enter a referral code");
-    return;
-  }
+      if (!input) {
+        showToast("Enter a gift card code");
+        return;
+      }
 
-  if (selectedPlan === "hourly") {
-    appliedReferral = null;
-    referralDiscount = 0;
-    showToast("Referral discount apply only on day and night plan");
-    updateSummary();
-    return;
-  }
+      if (selectedPlan === "hourly") {
+        appliedReferral = null;
+        referralDiscount = 0;
+        showToast("Gift card discount apply only on day and night plan");
+        updateSummary();
+        return;
+      }
 
-if (referralCodesCache[input]) {
-  appliedReferral = input;
-  referralDiscount = referralCodesCache[input];
-  showDiscountPopup(referralDiscount); // <-- new popup with confetti
-} else {
-  appliedReferral = null;
-  referralDiscount = 0;
-  showToast("Invalid referral code");
-}
+      if (referralCodesCache[input]) {
+        appliedReferral = input;
+        referralDiscount = referralCodesCache[input];
+        showDiscountPopup(referralDiscount); // <-- new popup with confetti
+      } else {
+        appliedReferral = null;
+        referralDiscount = 0;
+        showToast("Invalid gift card code");
+      }
 
 
-  updateSummary();
-}
+      updateSummary();
+    }
 
 
 
@@ -1588,7 +1588,7 @@ if (referralCodesCache[input]) {
     ${controllerCharge > 0 ? `<div>Extra Controller: ₹${controllerCharge}</div>` : ''}
     <div>Delivery, Installation & Pick Up: ₹${deliveryCharge}</div>
     ${couponDiscount > 0 ? `<div class='text-green-600'>Coupon Discount: -₹${couponDiscount}</div>` : ''}
-    ${referralDiscount > 0 ? `<div class='text-green-600'>Referral Discount: -₹${referralDiscount}</div>` : ''}
+    ${referralDiscount > 0 ? `<div class='text-green-600'>Gift Card Discount: -₹${referralDiscount}</div>` : ''}
     ${upiDiscount > 0 ? `<div class='text-green-600'>UPI Discount (10%): -₹${upiDiscount}</div>` : ''}
     <div class='font-medium text-lg mt-2'>${totalLine}</div>
   `;
@@ -1598,46 +1598,46 @@ if (referralCodesCache[input]) {
     }
 
     function showDiscountPopup(amount) {
-  const popup = document.getElementById("discountPopup");
-  const content = document.getElementById("discountPopupContent");
-  const discountText = document.getElementById("discountAmount");
+      const popup = document.getElementById("discountPopup");
+      const content = document.getElementById("discountPopupContent");
+      const discountText = document.getElementById("discountAmount");
 
-  discountText.textContent = `₹${amount}`;
-  popup.classList.remove("hidden");
+      discountText.textContent = `₹${amount}`;
+      popup.classList.remove("hidden");
 
-  // Animate both overlay and content
-  setTimeout(() => {
-    popup.classList.remove("opacity-0");
-    popup.classList.add("opacity-100");
+      // Animate both overlay and content
+      setTimeout(() => {
+        popup.classList.remove("opacity-0");
+        popup.classList.add("opacity-100");
 
-    content.classList.remove("opacity-0", "scale-90");
-    content.classList.add("opacity-100", "scale-100");
-  }, 20);
+        content.classList.remove("opacity-0", "scale-90");
+        content.classList.add("opacity-100", "scale-100");
+      }, 20);
 
-  // Confetti 🎉
-  confetti({
-    particleCount: 60,
-    spread: 70,
-    origin: { y: 0.6 },
-    ticks: 140  
-  });
+      // Confetti 🎉
+      confetti({
+        particleCount: 60,
+        spread: 70,
+        origin: { y: 0.6 },
+        ticks: 140
+      });
 
-  // Auto hide after 1.8s
-  setTimeout(() => hideDiscountPopup(), 1800);
+      // Auto hide after 1.8s
+      setTimeout(() => hideDiscountPopup(), 1800);
 
-  // Manual dismiss
-  popup.onclick = hideDiscountPopup;
+      // Manual dismiss
+      popup.onclick = hideDiscountPopup;
 
-  function hideDiscountPopup() {
-    popup.classList.remove("opacity-100");
-    popup.classList.add("opacity-0");
+      function hideDiscountPopup() {
+        popup.classList.remove("opacity-100");
+        popup.classList.add("opacity-0");
 
-    content.classList.remove("opacity-100", "scale-100");
-    content.classList.add("opacity-0", "scale-90");
+        content.classList.remove("opacity-100", "scale-100");
+        content.classList.add("opacity-0", "scale-90");
 
-    setTimeout(() => popup.classList.add("hidden"), 300);
-  }
-}
+        setTimeout(() => popup.classList.add("hidden"), 300);
+      }
+    }
 
 
 
@@ -1797,7 +1797,7 @@ if (referralCodesCache[input]) {
         dayCoupon.innerHTML = `Use code <span class="font-bold">LEAZO</span><br>
       and get extra ₹400 off`
         dayTime.textContent = "Morning 11 AM - Evening 8 PM"
-        
+
         nightPrice.textContent = "₹799/night";
         nightCouPrice.textContent = "₹799";
         nightBadge.textContent = "₹700 OFF";
@@ -1921,73 +1921,83 @@ if (referralCodesCache[input]) {
   </script>
 
   <!-- END OF UPDATED MULTISTEP BOOKING MODAL -->
-<!-- Trust Section (2 columns on mobile, 3 on desktop) -->
-<!-- Trust Section (with Cash on Delivery) -->
-<section class="bg-gradient-to-r from-yellow-100 via-white to-yellow-50 py-12 px-6">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
-      Why Gamers Trust <span class="text-yellow-500">Leazo</span>
-    </h2>
+  <!-- Trust Section (2 columns on mobile, 3 on desktop) -->
+  <!-- Trust Section (with Cash on Delivery) -->
+  <section class="bg-gradient-to-r from-yellow-100 via-white to-yellow-50 py-12 px-6">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-800">
+        Why Gamers Trust <span class="text-yellow-500">Leazo</span>
+      </h2>
 
-    <div class="grid gap-6 grid-cols-2 md:grid-cols-4">
-      <!-- Cash on Delivery -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
-        <div class="bg-yellow-100 p-4 rounded-full mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-    d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
-</svg>
+      <div class="grid gap-6 grid-cols-2 md:grid-cols-4">
+        <!-- Cash on Delivery -->
+        <div
+          class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+          <div class="bg-yellow-100 p-4 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+            </svg>
 
+          </div>
+          <h3 class="text-xl font-semibold">Cash on Delivery</h3>
+          <p class="hidden md:block text-gray-600 mt-2">Pay easily with COD — no need for online transactions.</p>
         </div>
-        <h3 class="text-xl font-semibold">Cash on Delivery</h3>
-        <p class="hidden md:block text-gray-600 mt-2">Pay easily with COD — no need for online transactions.</p>
-      </div>
 
-      <!-- Home Delivery -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
-        <div class="bg-yellow-100 p-4 rounded-full mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 7h13v10H3V7zm13 0l5 5v5h-5V7zM5 17a2 2 0 104 0 2 2 0 00-4 0zm10 0a2 2 0 104 0 2 2 0 00-4 0z"/>
-          </svg>
+        <!-- Home Delivery -->
+        <div
+          class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+          <div class="bg-yellow-100 p-4 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7h13v10H3V7zm13 0l5 5v5h-5V7zM5 17a2 2 0 104 0 2 2 0 00-4 0zm10 0a2 2 0 104 0 2 2 0 00-4 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold">Home Delivery</h3>
+          <p class="hidden md:block text-gray-600 mt-2">Get your PS5 and games delivered right to your doorstep,
+            hassle-free.</p>
         </div>
-        <h3 class="text-xl font-semibold">Home Delivery</h3>
-        <p class="hidden md:block text-gray-600 mt-2">Get your PS5 and games delivered right to your doorstep, hassle-free.</p>
-      </div>
 
-      
 
-      <!-- Affordable Price -->
-      <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
-        <div class="bg-yellow-100 p-4 rounded-full mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-    d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-</svg>
 
+        <!-- Affordable Price -->
+        <div
+          class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+          <div class="bg-yellow-100 p-4 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+          </div>
+          <h3 class="text-xl font-semibold">Affordable Price</h3>
+          <p class="hidden md:block text-gray-600 mt-2">We guarantee the best rental prices — play more, spend less.</p>
         </div>
-        <h3 class="text-xl font-semibold">Affordable Price</h3>
-        <p class="hidden md:block text-gray-600 mt-2">We guarantee the best rental prices — play more, spend less.</p>
+        <!-- No Deposit -->
+        <div
+          class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
+          <div class="bg-yellow-100 p-4 rounded-full mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+            </svg>
+
+          </div>
+          <h3 class="text-xl font-semibold">No Deposit</h3>
+          <p class="hidden md:block text-gray-600 mt-2">Play without worries — we don’t ask for any security deposits.
+          </p>
+        </div>
+
+
       </div>
-      <!-- No Deposit -->
-            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center hover:shadow-2xl transition transform hover:-translate-y-1">
-              <div class="bg-yellow-100 p-4 rounded-full mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
-      </svg>
-
-              </div>
-              <h3 class="text-xl font-semibold">No Deposit</h3>
-              <p class="hidden md:block text-gray-600 mt-2">Play without worries — we don’t ask for any security deposits.</p>
-            </div>
-      
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!--
+  <!--
 //How It Works Section
 <section id="how" class="bg-gray-50 py-12 px-6">
   <div class="container mx-auto text-center">
@@ -2044,15 +2054,15 @@ if (referralCodesCache[input]) {
 </section> -->
 
 
-<!-- Google Reviews Section -->
-<section id="reviews" class="px-4 py-12 bg-gray-50">
-  <div class="container mx-auto text-center">
+  <!-- Google Reviews Section -->
+  <section id="reviews" class="px-4 py-12 bg-gray-50">
+    <div class="container mx-auto text-center">
 
-    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-3e6e3292-f68b-4ff3-b50d-7b4a2af4c1df" data-elfsight-app-lazy></div>
-  </div>
-</section>
+      <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-3e6e3292-f68b-4ff3-b50d-7b4a2af4c1df" data-elfsight-app-lazy></div>
+    </div>
+  </section>
 
 
 
@@ -2081,7 +2091,8 @@ if (referralCodesCache[input]) {
         <div>
           <h2 class="text-xl font-bold text-white mb-4">Quick Links</h2>
           <ul class="space-y-2">
-            <li><a href="referral-portal.html" class="text-gray-300 hover:text-[#FFD345] transition">Refer & Earn</a></li>
+            <li><a href="referral-portal.html" class="text-gray-300 hover:text-[#FFD345] transition">Refer & Earn</a>
+            </li>
             <li><a href="TnC.html" class="text-gray-300 hover:text-[#FFD345] transition">Terms & Conditions</a></li>
             <li><a href="privacy-policy.html" class="text-gray-300 hover:text-[#FFD345] transition">Privacy Policy</a>
             </li>
@@ -2137,24 +2148,22 @@ if (referralCodesCache[input]) {
 
   <!-- City Selection Modal with Icons -->
 
-<!-- Discount Popup -->
-<!-- Discount Popup Modal -->
-<!-- Discount Popup Modal -->
-<div id="discountPopup" 
-  class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 
+  <!-- Discount Popup -->
+  <!-- Discount Popup Modal -->
+  <!-- Discount Popup Modal -->
+  <div id="discountPopup" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 
          opacity-0 transition-opacity duration-300 ease-out">
-  <div id="discountPopupContent" 
-    class="bg-white px-6 py-4 rounded-2xl shadow-xl text-center max-w-sm 
+    <div id="discountPopupContent" class="bg-white px-6 py-4 rounded-2xl shadow-xl text-center max-w-sm 
            opacity-0 scale-90 transition-all duration-300 ease-out">
-    <h2 class="text-2xl font-bold text-blue-600 mb-1">🎉</h2>
-    <h2 class="text-xl font-bold text-blue-500 ">Discount Applied!</h2>
-    <p class="text-lg font-medium ">You Saved </p>
-    <p id="discountAmount" class="text-xl text-green-600 font-bold mb-1"></p>
+      <h2 class="text-2xl font-bold text-blue-600 mb-1">🎉</h2>
+      <h2 class="text-xl font-bold text-blue-500 ">Discount Applied!</h2>
+      <p class="text-lg font-medium ">You Saved </p>
+      <p id="discountAmount" class="text-xl text-green-600 font-bold mb-1"></p>
+    </div>
   </div>
-</div>
 
 
-<!-- Discount Popup -->
+  <!-- Discount Popup -->
 
 
 
