@@ -1298,7 +1298,7 @@
               const start = parseInt(document.getElementById("startTime")?.value || 0);
               const end = parseInt(document.getElementById("endTime")?.value || 0);
               const hours = end - start > 0 ? end - start : 2;
-              discount = Math.round(hours * 198) * 0.4; // 50% off hourly
+              discount = hours * Math.ceil(199 * 0.4); // 50% off hourly
             }
             if (plan === "day") discount = 500;
             if (plan === "night") discount = 800;
@@ -1351,7 +1351,7 @@
             const start = parseInt(document.getElementById("startTime")?.value || 0);
             const end = parseInt(document.getElementById("endTime")?.value || 0);
             const hours = end - start > 0 ? end - start : 2;
-            discount = Math.round(hours * 198) * 0.4; // 50% off hourly
+            discount = hours * Math.ceil(199 * 0.4); // 40% off hourly
           }
           if (plan === "day") discount = 500;
           if (plan === "night") discount = 800;
@@ -1523,7 +1523,7 @@
           if (plan === "day") couponDiscount = 400;
           if (plan === "night") couponDiscount = 700;
         } else {
-          if (plan === "hourly") couponDiscount = Math.round(0.4 * planPrice);
+          if (plan === "hourly") couponDiscount = hours * Math.ceil(199 * 0.4);
           if (plan === "day") couponDiscount = 500;
           if (plan === "night") couponDiscount = 800;
         }
@@ -1602,7 +1602,7 @@
       const content = document.getElementById("discountPopupContent");
       const discountText = document.getElementById("discountAmount");
 
-      discountText.textContent = `₹${Math.round(amount)}`;
+      discountText.textContent = `₹${Math.ceil(amount)}`;
       popup.classList.remove("hidden");
 
       // Animate both overlay and content
