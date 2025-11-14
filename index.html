@@ -199,10 +199,10 @@
 
         <div data-plan="hourly"
           class="relative border rounded-xl p-6 w-full max-w-xs flex flex-col justify-between items-center text-center transition duration-200 ease-in-out transform hover:scale-105 shadow-sm border-b-4 border-black">
-          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">50% OFF</div>
+          <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">40% OFF</div>
           <h4 class="text-3xl font-semibold">🕒<br>Hourly Plan</h4>
           <p class="text-xl font-semibold text-gray-500 line-through">₹199</p>
-          <p class="text-2xl font-semibold mt-1">₹99/hr</p>
+          <p class="text-2xl font-semibold mt-1">₹119/hr</p>
           <button onclick="toggleDetails(this)" data-plan="hourly"
             class="plan-btn mt-4 mb-3 inline-block bg-black text-white px-5 py-2 rounded-full text-sm md:text-base transition duration-200 ease-in-out transform hover:scale-105 hover:bg-gray-800 font-semibold">
             Select
@@ -219,14 +219,14 @@
               <div class="flex items-center gap-2">
                 <p class="text-sm font-medium">Offer</p>
               </div>
-              <p class="text-2xl md:text-3xl font-bold">₹99</p>
+              <p class="text-2xl md:text-3xl font-bold">₹119</p>
             </div>
 
             <!-- Right Section -->
             <div class="bg-black text-white flex items-center justify-between px-4 py-3 w-2/3 relative">
               <p class="text-sm md:text-base leading-tight">
                 Use code <span class="font-bold">LEAZO</span><br>
-                and get extra 50% off
+                and get extra 40% off
               </p>
             </div>
           </div>
@@ -1298,7 +1298,7 @@
               const start = parseInt(document.getElementById("startTime")?.value || 0);
               const end = parseInt(document.getElementById("endTime")?.value || 0);
               const hours = end - start > 0 ? end - start : 2;
-              discount = (hours * 198) * 0.5; // 50% off hourly
+              discount = Math.round(hours * 198) * 0.4; // 50% off hourly
             }
             if (plan === "day") discount = 500;
             if (plan === "night") discount = 800;
@@ -1351,7 +1351,7 @@
             const start = parseInt(document.getElementById("startTime")?.value || 0);
             const end = parseInt(document.getElementById("endTime")?.value || 0);
             const hours = end - start > 0 ? end - start : 2;
-            discount = (hours * 198) * 0.5; // 50% off hourly
+            discount = Math.round(hours * 198) * 0.4; // 50% off hourly
           }
           if (plan === "day") discount = 500;
           if (plan === "night") discount = 800;
@@ -1453,7 +1453,7 @@
         const end = parseInt(endInput.value);
         hours = end - start;
         if (!isNaN(hours) && hours > 0) {
-          planPrice = hours * 198;
+          planPrice = hours * 199;
         } else {
           planPrice = 0;
         }
@@ -1479,7 +1479,7 @@
       const addController = document.getElementById("addController")?.checked;
       let controllerCharge = 0;
       if (addController) {
-        if (plan === "hourly") controllerCharge = 19 * (hours || 2); // assume 2 hrs min if missing
+        if (plan === "hourly") controllerCharge = 29 * (hours || 2); // assume 2 hrs min if missing
         else if (plan === "day") controllerCharge = 99;
         else if (plan === "night") controllerCharge = 99;
       }
@@ -1488,7 +1488,7 @@
       try {
         const controllerText = document.getElementById("controller-price-text");
         if (controllerText) {
-          if (plan === "hourly") controllerText.textContent = `₹19/hr`;
+          if (plan === "hourly") controllerText.textContent = `₹29/hr`;
           else if (plan === "day") controllerText.textContent = `₹99`;
           else if (plan === "night") controllerText.textContent = `₹99`;
         }
@@ -1523,7 +1523,7 @@
           if (plan === "day") couponDiscount = 400;
           if (plan === "night") couponDiscount = 700;
         } else {
-          if (plan === "hourly") couponDiscount = 0.5 * planPrice;
+          if (plan === "hourly") couponDiscount = Math.round(0.4 * planPrice);
           if (plan === "day") couponDiscount = 500;
           if (plan === "night") couponDiscount = 800;
         }
@@ -1558,7 +1558,7 @@
         if (plan === "day") couponAmountText = "₹400";
         else if (plan === "night") couponAmountText = "₹700";
       } else {
-        if (plan === "hourly") couponAmountText = "50%";
+        if (plan === "hourly") couponAmountText = "40%";
         else if (plan === "day") couponAmountText = "₹500";
         else if (plan === "night") couponAmountText = "₹800";
       }
@@ -1602,7 +1602,7 @@
       const content = document.getElementById("discountPopupContent");
       const discountText = document.getElementById("discountAmount");
 
-      discountText.textContent = `₹${amount}`;
+      discountText.textContent = `₹${Math.round(amount)}`;
       popup.classList.remove("hidden");
 
       // Animate both overlay and content
