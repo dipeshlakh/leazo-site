@@ -759,11 +759,12 @@
             <p class="font-semibold mb-2 text-gray-700">Select Payment Method:</p>
 
             <div class="flex w-full gap-1">
-              <!-- UPI -->
-              <div onclick="selectPayment('upi')"
+              <!-- Prepaid / Online -->
+              <div onclick="selectPayment('prepaid')"
                 class="flex-1 payment-option border px-3 py-3 rounded-xl cursor-pointer hover:bg-gray-100 transition flex flex-col items-center justify-center gap-1">
-                <img src="upi.webp" alt="UPI" class="w-7 h-3.5">
-                <span class="text-md font-medium text-center leading-tight">UPI (Extra 10% Off)</span>
+                <img src="upi.webp" alt="Pay Online" class="w-7 h-3.5">
+                <span class="text-md font-medium text-center leading-tight">Pay Online</span>
+                <span class="text-xs text-green-600 font-bold">5% OFF</span>
               </div>
 
               <!-- COD -->
@@ -771,8 +772,13 @@
                 class="flex-1 payment-option border px-3 py-3 rounded-xl cursor-pointer hover:bg-gray-100 transition flex flex-col items-center justify-center gap-1">
                 <img src="cod.webp" alt="Cash on Delivery" class="w-6 h-3">
                 <span class="text-md font-medium text-center leading-tight">Cash on Delivery</span>
+                <span class="text-xs text-gray-500 font-medium">10% advance</span>
               </div>
             </div>
+
+            <!-- Payment info line -->
+            <div id="paymentInfoLine" class="hidden mt-2 text-sm text-center font-medium rounded-lg px-3 py-2 bg-blue-50 text-blue-700"></div>
+
             <input type="hidden" name="payment-method" id="paymentMethod" />
           </div>
 
@@ -802,6 +808,13 @@
   <!-- [UNCHANGED HTML ABOVE] -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://rohybhpktpfmeashdlzz.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvaHliaHBrdHBmbWVhc2hkbHp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3MzcwMTYsImV4cCI6MjA5MzMxMzAxNn0.NhM9DnXOl_7h3NHh1r78cPNvbogO_qOEhPfQauyKHJE';
+    const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  </script>
 
   <script>
     let alertShown = false;
@@ -1060,20 +1073,39 @@
           setHiddenField("Total Amount", `₹${totalAmount}`);
 
 
-          // Send silently to Formcarry
-          fetch("https://formcarry.com/s/mNJ2DZIHpcR", {
-            method: "POST",
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          })
-            .then(response => {
-              if (response.ok) {
-                console.log("✅ Step 2 form data submitted silently");
-              } else {
-                console.error("❌ Silent submission failed");
-              }
-            })
-            .catch(err => console.error("❌ Network error", err));
+          // Capture lead silently to Supabase
+          (async () => {
+            try {
+              const selectedCity = localStorage.getItem("selectedCity") || "Not Selected";
+              const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
+              const startTimeEl = document.getElementById("startTime");
+              const endTimeEl = document.getElementById("endTime");
+              const fixedStartEl = document.getElementById("fixedStartTime");
+              const fixedEndEl = document.getElementById("fixedEndTime");
+              const startTime = plan === "hourly"
+                ? (startTimeEl?.selectedOptions?.[0]?.textContent || "")
+                : (fixedStartEl?.value || "");
+              const endTime = plan === "hourly"
+                ? (endTimeEl?.selectedOptions?.[0]?.textContent || "")
+                : (fixedEndEl?.value || "");
+              const selectedGames = Array.from(document.querySelectorAll('input[name="Games[]"]:checked'))
+                .map(i => i.value).join(", ");
+              const totalAmount = parseInt(document.getElementById("totalAmount")?.textContent || "0");
+              await db.from("leads").insert([{
+                customer_name: document.getElementById("name")?.value || "",
+                phone: document.getElementById("phone")?.value || "",
+                city: selectedCity,
+                plan: plan,
+                booking_date: document.getElementById("booking-date")?.value || "",
+                start_time: startTime,
+                end_time: endTime,
+                total_amount: totalAmount,
+                games: selectedGames,
+                controller_added: document.getElementById("addController")?.checked || false,
+                converted: false
+              }]);
+            } catch (e) { /* silent fail */ }
+          })();
 
           // Finally, move to Step 3
           goToStep(3);
@@ -1323,12 +1355,28 @@
     function selectPayment(method) {
       document.getElementById("paymentMethod").value = method;
       document.querySelectorAll(".payment-option").forEach(el =>
-        el.classList.remove("ring", "ring-blue-500", "ring-2")
+        el.classList.remove("ring", "ring-blue-500", "ring-2", "ring-green-500")
       );
       document.querySelector(`.payment-option[onclick*='${method}']`)
-        .classList.add("ring", "ring-blue-500", "ring-2");
+        .classList.add("ring", "ring-2", method === "prepaid" ? "ring-green-500" : "ring-blue-500");
 
-      updateSummary(); // <-- important to refresh pricing
+      // Show payment info line
+      const base = parseInt(document.getElementById("totalAmount")?.textContent || "0");
+      const infoLine = document.getElementById("paymentInfoLine");
+      if (infoLine && base > 0) {
+        if (method === "prepaid") {
+          const discounted = Math.round(base * 0.95);
+          infoLine.textContent = `🎉 You save ₹${base - discounted}! Pay ₹${discounted} now — full payment online.`;
+          infoLine.className = "mt-2 text-sm text-center font-medium rounded-lg px-3 py-2 bg-green-50 text-green-700";
+        } else {
+          const advance = Math.max(1, Math.round(base * 0.10));
+          infoLine.textContent = `Pay ₹${advance} now to confirm. Remaining ₹${base - advance} paid on delivery.`;
+          infoLine.className = "mt-2 text-sm text-center font-medium rounded-lg px-3 py-2 bg-blue-50 text-blue-700";
+        }
+        infoLine.classList.remove("hidden");
+      }
+
+      updateSummary();
     }
 
 
@@ -1376,15 +1424,15 @@
 
     async function loadReferralCodes() {
       try {
-        const webappURL = "https://script.google.com/macros/s/AKfycbx-J5qod-YnxNoy3mBQ-_BKQKvtQ7UnnG4sqSkIN1r165P3dB1wKd9zblBqRmNdvDkXKw/exec"; // <-- replace with your Apps Script URL
-        const res = await fetch(webappURL + "?all=1");
-        const data = await res.json();
-        if (data.ok && data.codes) {
-          referralCodesCache = data.codes;
-          console.log("Referral codes loaded:", referralCodesCache);
+        const { data, error } = await db.from("gift_cards").select("code, discount");
+        if (error) throw error;
+        if (data) {
+          data.forEach(row => {
+            referralCodesCache[row.code.toLowerCase()] = row.discount;
+          });
         }
       } catch (err) {
-        console.error("Failed to load referral codes", err);
+        console.log("Gift cards not loaded:", err.message);
       }
     }
 
@@ -1661,38 +1709,7 @@
     }
 
     document.getElementById("bookingForm").addEventListener("submit", function (e) {
-      e.preventDefault(); // stop default page reload
-
-      const btn = document.getElementById("bookBtn");
-      btn.disabled = true;
-      btn.innerHTML = `
-    <svg class="animate-spin h-5 w-5 mr-2 inline" viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
-      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"/>
-    </svg> Booking...
-  `;
-
-      fetch(this.action, {
-        method: this.method,
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          showToast('Booking Confirmed');
-          this.reset();
-          btn.disabled = false;
-          btn.textContent = 'Book Now';
-          document.getElementById('bookingModal').classList.add('hidden'); // close modal
-        } else {
-          showToast('Something went wrong\nPlease try again or Call/Whatsapp on 9202227070');
-          btn.disabled = false;
-          btn.textContent = 'Book Now';
-        }
-      }).catch(error => {
-        showToast('Network error\nCheck your connection or Call/Whatsapp on 9202227070');
-        btn.disabled = false;
-        btn.textContent = 'Book Now';
-      });
+      e.preventDefault(); // booking is handled by the bookBtn click handler above
     });
 
 
@@ -1828,16 +1845,13 @@
       return 'LEAZO-' + Math.floor(100000 + Math.random() * 900000);
     }
 
-    document.getElementById("bookBtn").addEventListener("click", function (e) {
+    document.getElementById("bookBtn").addEventListener("click", async function (e) {
       e.preventDefault();
 
       const form = document.getElementById("bookingForm");
 
-      // Remove required from hidden fields before validating
       document.querySelectorAll("[required]").forEach(el => {
-        if (el.offsetParent === null) { // hidden element
-          el.required = false;
-        }
+        if (el.offsetParent === null) el.required = false;
       });
 
       if (!form.checkValidity()) {
@@ -1845,78 +1859,129 @@
         return;
       }
 
-
-      // Gather extra booking details
-      const selectedCity = localStorage.getItem("selectedCity") || "Not Selected";
-      const controllerSelected = document.getElementById("addController")?.checked ? "Yes" : "No";
-      const twoPlayerToggle = document.getElementById("filterMultiplayer")?.checked ? "On" : "Off";
-      const couponCode = document.getElementById("couponCode")?.value || "None";
-      const referralCodeInput = document.getElementById("referralCodeInput")?.value || "None";
-
-      // Read breakdown & total from Step 3
-      const priceBreakdown = document.getElementById("summaryBreakdown")?.innerText || "";
-      const totalAmount = document.getElementById("totalAmount")?.innerText || "0";
-
-      // Helper to create/update hidden inputs
-      function setHiddenField(name, value) {
-        let input = form.querySelector(`input[name="${name}"]`);
-        if (!input) {
-          input = document.createElement("input");
-          input.type = "hidden";
-          input.name = name;
-          form.appendChild(input);
-        }
-        input.value = value;
+      const paymentMethod = document.getElementById("paymentMethod")?.value;
+      if (!paymentMethod || paymentMethod === "no choose") {
+        showToast("Please select a payment method");
+        return;
       }
-      const refNumber = generateReferenceNumber();
 
-      // Append all extra fields
-      setHiddenField("Submission Stage", "Final Confirmed Booking");
-      setHiddenField("Selected City", selectedCity);
-      setHiddenField("Extra Controller Selected", controllerSelected);
-      setHiddenField("2 Player Toggle", twoPlayerToggle);
-      setHiddenField("Coupon Code", couponCode);
-      setHiddenField("Referral Code", referralCodeInput);
-      setHiddenField("Price Breakdown", priceBreakdown);
-      setHiddenField("Total Amount", `₹${totalAmount}`);
-      setHiddenField("Reference Number", refNumber);
-
-
-      // Button loading state
       const btn = this;
       btn.disabled = true;
       btn.innerHTML = `
-    <svg class="animate-spin h-5 w-5 mr-2 inline" viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10"
-        stroke="currentColor" stroke-width="4" fill="none"/>
-      <path class="opacity-75" fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"/>
-    </svg> Booking...
-  `;
+        <svg class="animate-spin h-5 w-5 mr-2 inline" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"/>
+        </svg> Processing...`;
 
-      // Send to Formcarry
-      fetch("https://formcarry.com/s/CPgVxLB5qnD", {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-        .then(response => {
-          if (response.ok) {
+      const selectedCity = localStorage.getItem("selectedCity") || "Not selected";
+      const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
 
-            // Redirect to thank-you page with reference number in URL
-            window.location.href = `booking-confirmation.html?ref=${encodeURIComponent(refNumber)}`;
-          } else {
-            showToast("Click again");
+      const selectedGames = Array.from(document.querySelectorAll('input[name="Games[]"]:checked'))
+        .map(i => i.value).join(", ");
+
+      const startTimeEl = document.getElementById("startTime");
+      const endTimeEl = document.getElementById("endTime");
+      const fixedStartEl = document.getElementById("fixedStartTime");
+      const fixedEndEl = document.getElementById("fixedEndTime");
+
+      const startTime = plan === "hourly"
+        ? (startTimeEl?.selectedOptions?.[0]?.textContent || "")
+        : (fixedStartEl?.value || "");
+      const endTime = plan === "hourly"
+        ? (endTimeEl?.selectedOptions?.[0]?.textContent || "")
+        : (fixedEndEl?.value || "");
+
+      const couponCode = document.getElementById("couponCode")?.value || "";
+      const referralCode = document.getElementById("referralCodeInput")?.value || "";
+      const controllerAdded = document.getElementById("addController")?.checked || false;
+      const refNumber = generateReferenceNumber();
+
+      const customerName = document.getElementById("name")?.value || "";
+      const customerPhone = document.getElementById("phone")?.value || "";
+
+      // Calculate amounts
+      let baseAmount = parseInt(document.getElementById("totalAmount")?.textContent || "0");
+      let finalAmount = baseAmount;
+      let chargeAmount = baseAmount; // amount to charge now
+
+      const isPrepaid = paymentMethod === "prepaid" || paymentMethod === "online";
+
+      if (isPrepaid) {
+        // 5% off for prepaid
+        finalAmount = Math.round(baseAmount * 0.95);
+        chargeAmount = finalAmount; // full payment
+      } else {
+        // COD: charge 10% advance now
+        finalAmount = baseAmount;
+        chargeAmount = Math.max(1, Math.round(baseAmount * 0.10));
+      }
+
+      const bookingData = {
+        customer_name: customerName,
+        phone: customerPhone,
+        address: document.getElementById("address-line")?.value || "",
+        city: selectedCity,
+        plan: plan,
+        games: selectedGames,
+        booking_date: document.getElementById("booking-date")?.value || "",
+        start_time: startTime,
+        end_time: endTime,
+        total_amount: finalAmount,
+        coupon_code: couponCode || referralCode || "none",
+        payment_method: paymentMethod,
+        payment_status: "pending",
+        operator_status: "new",
+        controller_added: controllerAdded,
+        reference_number: refNumber
+      };
+
+      try {
+        // 1. Save booking to Supabase first
+        const { error: dbError } = await db.from("bookings").insert([bookingData]);
+        if (dbError) {
+          console.error("Supabase error:", JSON.stringify(dbError));
+          throw new Error(dbError.message || "Booking save failed");
+        }
+
+        // 2. Create Cashfree order via Edge Function
+        const fnResponse = await fetch(
+          "https://rohybhpktpfmeashdlzz.supabase.co/functions/v1/create-cashfree-order",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+            },
+            body: JSON.stringify({
+              order_id: refNumber,
+              order_amount: chargeAmount,
+              customer_name: customerName,
+              customer_phone: customerPhone,
+              customer_email: "customer@leazo.in",
+              return_url: `https://leazo.in/orderdetail.html?ref=${encodeURIComponent(refNumber)}`
+            })
           }
-        })
+        );
 
-        .catch(() => {
-          showToast("Network error\nCall/Whatsapp on 9202227070");
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.textContent = "Book Now";
+        const cfData = await fnResponse.json();
+
+        if (!fnResponse.ok || cfData.error) {
+          throw new Error(cfData.error || "Payment setup failed");
+        }
+
+        // 3. Launch Cashfree checkout via SDK
+        const cashfree = Cashfree({ mode: "sandbox" }); // change to "production" when going live
+        cashfree.checkout({
+          paymentSessionId: cfData.payment_session_id,
+          returnUrl: `https://leazo.in/orderdetail.html?ref=${encodeURIComponent(refNumber)}`,
         });
+
+      } catch (err) {
+        console.error("Booking error:", err);
+        showToast("Something went wrong\nPlease call/WhatsApp 9202227070");
+        btn.disabled = false;
+        btn.textContent = "Book Now";
+      }
     });
 
 
@@ -2174,5 +2239,3 @@
 </body>
 
 </html>
-
-
