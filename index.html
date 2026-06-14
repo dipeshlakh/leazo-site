@@ -372,153 +372,192 @@
               class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
             </div>
 
-            <div id="game-selection" class="flex overflow-x-auto space-x-4 px-2 py-2 snap-x scroll-smooth">
-              <!-- Each game card -->
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="gta5.webp" alt="GTA 5"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="GTA 5" class="hidden game-checkbox" data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">GTA 5</span>
-              </label>
+          <div id="game-selection" class="flex overflow-x-auto space-x-4 px-2 py-2 snap-x scroll-smooth">
+  <!-- 2 Player Games -->
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="true">
+    <img src="fifa.webp" alt="FIFA (FC25)"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
+    <input type="checkbox" name="Games[]" value="FIFA (FC25)" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">FIFA (FC25)</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="true">
-                <img src="wwe2k25.webp" alt="WWE 2K25"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="WWE 2K25" class="hidden game-checkbox" data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">WWE 2K25</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="true">
+    <img src="ittakestwo.webp" alt="It Takes Two"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="It Takes Two" class="hidden game-checkbox"
+      data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">It Takes Two</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="true">
-                <img src="fifa.webp" alt="FIFA (FC25)"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="FIFA (FC25)" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">FIFA (FC25)</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="true">
+    <img src="f124.webp" alt="F1 24"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="F1 24" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">F1 24</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="godofwar.webp" alt="God of War"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
-                <input type="checkbox" name="Games[]" value="God of War" class="hidden game-checkbox" data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">God of War</span>
-              </label>
+  <!-- 1 Player Games -->
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="gta5.webp" alt="GTA 5"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
+    <input type="checkbox" name="Games[]" value="GTA 5" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">GTA 5</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="true">
-                <img src="ufc4.webp" alt="UFC 4"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="UFC 4" class="hidden game-checkbox" data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">UFC 4</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="spiderman2.webp" alt="Spiderman 2"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Spiderman 2" class="hidden game-checkbox"
+      data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Spiderman 2</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="spiderman2.webp" alt="Spiderman 2"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="Spiderman 2" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">spiderman 2</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="godofwarragnarok.webp" alt="God of War Ragnarok"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="God of War Ragnarok" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">God of War Ragnarok</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="true">
-                <img src="f124.webp" alt="F1 24"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="F1 24" class="hidden game-checkbox" data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">F1 24</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="tlou1.webp" alt="The Last of Us Part 1"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="The Last of Us Part 1" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">The Last of Us Part 1</span>
+  </label>
 
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="uncharted4.webp" alt="Uncharted 4"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Uncharted 4" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Uncharted 4</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="true">
-                <img src="ittakestwo.webp" alt="It Takes Two"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="It Takes Two" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">It Takes Two</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="assassinscreedsyndicate.webp" alt="Assassin's Creed Syndicate"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Assassin's Creed Syndicate" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Assassin's Creed Syndicate</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="needforspeed.webp" alt="Need for Speed"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="Need for Speed" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">Need for Speed</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="unchartedlostlegacy.webp" alt="Uncharted: The Lost Legacy"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Uncharted: The Lost Legacy" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Uncharted: The Lost Legacy</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="starwarsjedisurvivor.webp" alt="SW Jedi: Survivor"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="SW Jedi: Survivor" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">SW Jedi: Survivor</span>
-              </label>
+  <!-- Removed (not in requested list) -->
+  <!--
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="true">
+    <img src="wwe2k25.webp" alt="WWE 2K25"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
+    <input type="checkbox" name="Games[]" value="WWE 2K25" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">WWE 2K25</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="starwarsjedifallenorder.webp" alt="SW Jedi: Fallen Order"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="SW Jedi: Fallen Order" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">SW Jedi: Fallen Order</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="godofwar.webp" alt="God of War"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto">
+    <input type="checkbox" name="Games[]" value="God of War" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">God of War</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="true">
-                <img src="starwarsbattlefrontii.webp" alt="SW Battlefront II"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="SW Battlefront II" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">SW Battlefront II</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="true">
+    <img src="ufc4.webp" alt="UFC 4"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="UFC 4" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">UFC 4</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="starwarsjedisquadrons.webp" alt="SW Jedi: Squadrons"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="SW Jedi: Squadrons" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">SW Jedi: Squadrons</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="needforspeed.webp" alt="Need for Speed"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Need for Speed" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Need for Speed</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="battlefield2042.webp" alt="Battlefield 2042"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="Battlefield 2042" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">Battlefield 2042</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="starwarsjedisurvivor.webp" alt="SW Jedi: Survivor"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="SW Jedi: Survivor" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">SW Jedi: Survivor</span>
+  </label>
 
-              <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
-                data-multiplayer="false">
-                <img src="battlefieldv.webp" alt="Battlefield V"
-                  class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" / loading="lazy"
-                  decoding="async" width="80" height="80">
-                <input type="checkbox" name="Games[]" value="Battlefield V" class="hidden game-checkbox"
-                  data-price="49" />
-                <span class="text-sm block mt-1 text-gray-800">Battlefield V</span>
-              </label>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="starwarsjedifallenorder.webp" alt="SW Jedi: Fallen Order"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="SW Jedi: Fallen Order" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">SW Jedi: Fallen Order</span>
+  </label>
 
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="true">
+    <img src="starwarsbattlefrontii.webp" alt="SW Battlefront II"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="SW Battlefront II" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">SW Battlefront II</span>
+  </label>
 
-              <!-- Add more game cards as needed -->
-            </div>
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="starwarsjedisquadrons.webp" alt="SW Jedi: Squadrons"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="SW Jedi: Squadrons" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">SW Jedi: Squadrons</span>
+  </label>
+
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="battlefield2042.webp" alt="Battlefield 2042"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Battlefield 2042" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Battlefield 2042</span>
+  </label>
+
+  <label class="game-card min-w-[100px] flex-shrink-0 cursor-pointer text-center snap-center"
+    data-multiplayer="false">
+    <img src="battlefieldv.webp" alt="Battlefield V"
+      class="game-img w-20 h-20 rounded-lg object-cover border-2 border-gray-200 mx-auto" loading="lazy"
+      decoding="async" width="80" height="80">
+    <input type="checkbox" name="Games[]" value="Battlefield V" class="hidden game-checkbox" data-price="49" />
+    <span class="text-sm block mt-1 text-gray-800">Battlefield V</span>
+  </label>
+  -->
+
+  <!-- Add more game cards as needed -->
+</div>
           </div>
 
           <p class="text-xs text-gray-500 text-center mb-1">⬅️ Swipe to see more games ➡️</p>
