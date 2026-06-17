@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Leazo – Operator Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { background: #f3f4f6; }
+    .status-new       { background: #fef3c7; color: #92400e; }
+    .status-delivered { background: #d1fae5; color: #065f46; }
+    .status-returned  { background: #e0e7ff; color: #3730a3; }
+    .status-cancelled { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body class="font-sans pb-20">
+
+  <!-- Login Screen -->
+  <div id="loginScreen" class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-sm">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-black italic tracking-widest text-gray-900">LEAZO</h1>
+        <p class="text-sm text-gray-500 mt-1">Operator Panel</p>
+      </div>
+      <input id="passInput" type="password" placeholder="Enter operator password"
+        class="w-full border-2 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-yellow-400 mb-4" />
+      <button onclick="checkLogin()"
+        class="w-full bg-yellow-400 border-b-4 border-yellow-600 text-black font-bold py-3 rounded-xl hover:bg-yellow-500 transition">
+        Login
+      </button>
+      <p id="loginError" class="text-red-500 text-sm text-center mt-3 hidden">Wrong password. Try again.</p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="hidden">
+
+    <!-- Header -->
+    <div class="bg-yellow-400 border-b-4 border-blue-600 px-4 py-3 flex justify-between items-center sticky top-0 z-10">
+      <span class="text-xl font-black italic tracking-widest">LEAZO</span>
+      <div class="flex items-center gap-3">
+        <span id="cityBadge" class="text-xs font-bold bg-black text-white px-3 py-1 rounded-full"></span>
+        <button onclick="logout()" class="text-xs text-gray-700 underline">Logout</button>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="grid grid-cols-3 gap-2 px-3 py-3">
+      <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+        <p class="text-2xl font-bold text-yellow-500" id="statNew">0</p>
+        <p class="text-xs text-gray-500">New</p>
+      </div>
+      <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+        <p class="text-2xl font-bold text-green-600" id="statDelivered">0</p>
+        <p class="text-xs text-gray-500">Delivered</p>
+      </div>
+      <div class="bg-white rounded-xl p-3 text-center shadow-sm">
+        <p class="text-2xl font-bold text-blue-600" id="statReturned">0</p>
+        <p class="text-xs text-gray-500">Returned</p>
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex gap-2 px-3 pb-3 overflow-x-auto">
+      <button onclick="setFilter('all')"      class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-black text-white whitespace-nowrap" data-filter="all">All</button>
+      <button onclick="setFilter('new')"      class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-white text-gray-700 border whitespace-nowrap" data-filter="new">New</button>
+      <button onclick="setFilter('delivered')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-white text-gray-700 border whitespace-nowrap" data-filter="delivered">Delivered</button>
+      <button onclick="setFilter('returned')" class="filter-btn px-4 py-1.5 rounded-full text-sm font-medium bg-white text-gray-700 border whitespace-nowrap" data-filter="returned">Returned</button>
+    </div>
+
+    <!-- Bookings list -->
+    <div id="bookingsList" class="px-3 space-y-3">
+      <p class="text-center text-gray-400 py-10" id="loadingMsg">Loading bookings...</p>
+    </div>
+
+    <!-- Refresh button -->
+    <div class="fixed bottom-4 right-4">
+      <button onclick="loadBookings()"
+        class="bg-black text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center text-2xl">
+        ↻
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://rohybhpktpfmeashdlzz.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvaHliaHBrdHBmbWVhc2hkbHp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3MzcwMTYsImV4cCI6MjA5MzMxMzAxNn0.NhM9DnXOl_7h3NHh1r78cPNvbogO_qOEhPfQauyKHJE';
+    const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ── CONFIG ──────────────────────────────────────────────
+    // Each operator has a password and city
+    // Add more operators here as you expand cities
+    const OPERATORS = {
+      "leazo123":   { city: "Mandsaur" },
+      "neemuch456": { city: "Neemuch" },
+      "pratap789":  { city: "Pratapgarh" }
+    };
+    // ────────────────────────────────────────────────────────
+
+    let currentCity = null;
+    let currentFilter = "all";
+    let allBookings = [];
+
+    function checkLogin() {
+      const pass = document.getElementById("passInput").value.trim();
+      const operator = OPERATORS[pass];
+      if (operator) {
+        currentCity = operator.city;
+        sessionStorage.setItem("op_city", currentCity);
+        sessionStorage.setItem("op_pass", pass);
+        showDashboard();
+      } else {
+        document.getElementById("loginError").classList.remove("hidden");
+      }
+    }
+
+    document.getElementById("passInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") checkLogin();
+    });
+
+    function showDashboard() {
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("dashboard").classList.remove("hidden");
+      document.getElementById("cityBadge").textContent = currentCity;
+      loadBookings();
+    }
+
+    function logout() {
+      sessionStorage.clear();
+      location.reload();
+    }
+
+    // Auto-login if session exists
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedCity = sessionStorage.getItem("op_city");
+      const savedPass = sessionStorage.getItem("op_pass");
+      if (savedCity && OPERATORS[savedPass]) {
+        currentCity = savedCity;
+        showDashboard();
+      }
+    });
+
+    async function loadBookings() {
+      document.getElementById("loadingMsg")?.remove();
+
+      const { data, error } = await db
+        .from("bookings")
+        .select("*")
+        .eq("city", currentCity)
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      allBookings = data || [];
+      updateStats();
+      renderBookings();
+    }
+
+    function updateStats() {
+      document.getElementById("statNew").textContent =
+        allBookings.filter(b => b.operator_status === "new").length;
+      document.getElementById("statDelivered").textContent =
+        allBookings.filter(b => b.operator_status === "delivered").length;
+      document.getElementById("statReturned").textContent =
+        allBookings.filter(b => b.operator_status === "returned").length;
+    }
+
+    function setFilter(f) {
+      currentFilter = f;
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        const active = btn.dataset.filter === f;
+        btn.className = `filter-btn px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap border ${
+          active ? "bg-black text-white border-black" : "bg-white text-gray-700"
+        }`;
+      });
+      renderBookings();
+    }
+
+    function renderBookings() {
+      const list = document.getElementById("bookingsList");
+      const filtered = currentFilter === "all"
+        ? allBookings
+        : allBookings.filter(b => b.operator_status === currentFilter);
+
+      if (filtered.length === 0) {
+        list.innerHTML = `<p class="text-center text-gray-400 py-10">No bookings here</p>`;
+        return;
+      }
+
+      list.innerHTML = filtered.map(b => bookingCard(b)).join("");
+    }
+
+    function bookingCard(b) {
+      const statusLabel = {
+        new: "New",
+        delivered: "Delivered",
+        returned: "Returned",
+        cancelled: "Cancelled"
+      }[b.operator_status] || b.operator_status;
+
+      const paymentBadge = b.payment_status === "paid"
+        ? `<span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">Paid</span>`
+        : `<span class="text-xs bg-red-100 text-red-700 font-bold px-2 py-0.5 rounded-full">COD</span>`;
+
+      const actionButtons = () => {
+        if (b.operator_status === "new") return `
+          <button onclick="updateStatus('${b.id}', 'delivered')"
+            class="flex-1 bg-green-500 text-white font-bold py-2 rounded-xl text-sm">
+            Mark Delivered
+          </button>
+          <button onclick="updateStatus('${b.id}', 'cancelled')"
+            class="flex-1 bg-red-100 text-red-600 font-bold py-2 rounded-xl text-sm">
+            Cancel
+          </button>`;
+        if (b.operator_status === "delivered") return `
+          <button onclick="updateStatus('${b.id}', 'returned')"
+            class="w-full bg-blue-600 text-white font-bold py-2 rounded-xl text-sm">
+            Mark Returned
+          </button>`;
+        return "";
+      };
+
+      const date = new Date(b.created_at).toLocaleDateString("en-IN", {
+        day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"
+      });
+
+      return `
+        <div class="bg-white rounded-2xl shadow-sm p-4 space-y-3">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-bold text-gray-900 text-lg leading-tight">${b.customer_name}</p>
+              <p class="text-gray-500 text-sm">${date}</p>
+            </div>
+            <span class="status-${b.operator_status} text-xs font-bold px-3 py-1 rounded-full capitalize">${statusLabel}</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="bg-gray-50 rounded-xl p-2">
+              <p class="text-gray-400 text-xs">Plan</p>
+              <p class="font-semibold capitalize">${b.plan}</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-2">
+              <p class="text-gray-400 text-xs">Date</p>
+              <p class="font-semibold">${b.booking_date}</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-2">
+              <p class="text-gray-400 text-xs">Time</p>
+              <p class="font-semibold text-xs">${b.start_time} → ${b.end_time}</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-2">
+              <p class="text-gray-400 text-xs">Amount</p>
+              <p class="font-bold text-green-700">₹${b.total_amount}</p>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-2 text-sm">
+            <p class="text-gray-400 text-xs mb-1">Games</p>
+            <p class="font-medium">${b.games || "—"}</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-2 text-sm">
+            <p class="text-gray-400 text-xs mb-1">Delivery address</p>
+            <p class="font-medium">${b.address}</p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <a href="tel:${b.phone}"
+              class="flex-1 mr-2 bg-yellow-400 border-b-4 border-yellow-600 text-black font-bold py-2 rounded-xl text-sm text-center">
+              Call ${b.phone}
+            </a>
+            <a href="https://wa.me/91${b.phone}?text=Hi%20${encodeURIComponent(b.customer_name)}%2C%20your%20Leazo%20PS5%20is%20on%20the%20way!%20Ref%3A%20${b.reference_number}"
+              target="_blank"
+              class="flex-1 bg-green-500 text-white font-bold py-2 rounded-xl text-sm text-center">
+              WhatsApp
+            </a>
+          </div>
+
+          <div class="flex gap-2">
+            ${actionButtons()}
+          </div>
+
+          <div class="flex items-center justify-between pt-1 border-t border-gray-100">
+            <span class="text-xs text-gray-400">Ref: ${b.reference_number}</span>
+            <div class="flex items-center gap-2">
+              ${paymentBadge}
+              ${b.controller_added ? `<span class="text-xs bg-purple-100 text-purple-700 font-bold px-2 py-0.5 rounded-full">+Controller</span>` : ""}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    async function updateStatus(id, newStatus) {
+      const { error } = await db
+        .from("bookings")
+        .update({ operator_status: newStatus })
+        .eq("id", id);
+
+      if (error) {
+        alert("Update failed. Try again.");
+        return;
+      }
+
+      // Update locally without full reload
+      const booking = allBookings.find(b => b.id === id);
+      if (booking) booking.operator_status = newStatus;
+      updateStats();
+      renderBookings();
+    }
+  </script>
+</body>
+</html>
