@@ -577,32 +577,21 @@
 
 
           <div id="controller-option" class="hidden mt-3">
-            <div class="flex items-center gap-4 rounded-2xl border border-gray-300 bg-white px-4 py-3 shadow-sm">
-              <img src="dualsense.webp" alt="DualSense Controller" class="w-16 h-16 object-contain flex-shrink-0">
+            <label for="addController"
+              class="group flex items-center gap-4 rounded-2xl border border-gray-300 bg-white px-4 py-3 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
+
+              <img src="dualsense.webp" alt="DualSense Controller" class="w-16 h-16 object-contain">
+
               <div class="flex flex-col flex-1">
-                <span class="text-md font-semibold text-gray-800">Extra Controllers</span>
-                <span class="text-sm text-gray-500">₹100 each · Max 2</span>
-                <span id="controller-price-text" class="text-base font-medium text-blue-600 mt-1">₹0</span>
+                <span class="text-md font-semibold text-gray-800">Add Extra Controller</span>
+                <span class="text-sm text-gray-500">Required for 2 players</span>
+                <span id="controller-price-text" class="text-base font-medium text-blue-600 mt-1">₹99</span>
               </div>
-              <!-- Add button shown when qty = 0 -->
-              <button type="button" id="controllerAddBtn" onclick="changeControllerQty(1)"
-                class="flex-shrink-0 bg-[#393be5] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-blue-700 transition">
-                + Add
-              </button>
-              <!-- Qty selector shown when qty > 0 -->
-              <div id="controllerQtySelector" style="display:none;" class="flex-shrink-0 items-center gap-3">
-                <button type="button" onclick="changeControllerQty(-1)"
-                  style="width:36px;height:36px;border-radius:50%;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;color:#4b5563;background:white;cursor:pointer;flex-shrink:0;padding-bottom:2px;">
-                  &minus;
-                </button>
-                <span id="controllerQty" class="text-lg font-bold text-gray-900" style="min-width:20px;text-align:center;">0</span>
-                <button type="button" onclick="changeControllerQty(1)"
-                  style="width:36px;height:36px;border-radius:50%;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;color:#4b5563;background:white;cursor:pointer;flex-shrink:0;padding-bottom:2px;">
-                  &#43;
-                </button>
-              </div>
-              <input type="hidden" id="addController" value="0"/>
-            </div>
+
+              <input type="checkbox" id="addController"
+                class="w-5 h-5 text-blue-600 rounded-md border-gray-300 focus:outline-none focus:ring-blue-700"
+                aria-describedby="controller-desc controller-price" />
+            </label>
           </div>
 
 
@@ -930,20 +919,21 @@
 
       const gameCheckboxes = document.querySelectorAll('.game-checkbox');
       const controllerOption = document.getElementById('controller-option');
+      const controllerCheckbox = document.getElementById('addController');
 
       gameCheckboxes.forEach(cb => {
         cb.addEventListener('change', () => {
           const hasMultiplayer = Array.from(gameCheckboxes).some(input =>
             input.checked && input.closest('label').dataset.multiplayer === 'true'
           );
+
           controllerOption.classList.toggle('hidden', !hasMultiplayer);
+
           if (!hasMultiplayer) {
-            document.getElementById("controllerQty").textContent = "0";
-            document.getElementById("addController").value = "0";
-            document.getElementById("controllerAddBtn").classList.remove("hidden");
-            document.getElementById("controllerQtySelector").style.display = "none";
+            controllerCheckbox.checked = false;
           }
-          updateSummary();
+
+          updateSummary(); // Ensure pricing is updated
         });
       });
 
@@ -1056,10 +1046,12 @@
         }
 
         // ✅ Multiplayer warning before proceeding
+        const controllerCheckbox = document.getElementById("addController");
         const hasMultiplayerGame = Array.from(document.querySelectorAll('.game-checkbox')).some(input =>
           input.checked && input.closest('label')?.dataset.multiplayer === 'true'
         );
-        if (hasMultiplayerGame && getControllerQty() === 0) {
+
+        if (hasMultiplayerGame && !controllerCheckbox?.checked) {
           showToast("Add a controller for 2 Player games");
         }
 
@@ -1095,7 +1087,7 @@
 
           // Same extra fields logic as Book Now button
           const selectedCity = localStorage.getItem("selectedCity") || "Not Selected";
-          const controllerSelected = getControllerQty() > 0 ? `${getControllerQty()} controller(s)` : "No";
+          const controllerSelected = document.getElementById("addController")?.checked ? "Yes" : "No";
           const twoPlayerToggle = document.getElementById("filterMultiplayer")?.checked ? "On" : "Off";
           const couponCode = document.getElementById("couponCode")?.value || "None";
           const priceBreakdown = document.getElementById("summaryBreakdown")?.innerText || "";
@@ -1148,7 +1140,7 @@
                 end_time: endTime,
                 total_amount: totalAmount,
                 games: selectedGames,
-                controller_added: getControllerQty() > 0,
+                controller_added: document.getElementById("addController")?.checked || false,
                 converted: false
               };
               await db.from("leads").insert([leadData]);
@@ -1259,28 +1251,34 @@
     // ✅ Multiplayer toggle with toast on missing controller
     document.getElementById("multiplayerToggle")?.addEventListener("change", function () {
       const showOnlyMultiplayer = this.checked;
+
+      // Show/hide games based on multiplayer status
       document.querySelectorAll(".game-card").forEach(card => {
         const label = card.querySelector("label");
         const isMultiplayer = label?.dataset.multiplayer === "true";
         card.classList.toggle("hidden", showOnlyMultiplayer && !isMultiplayer);
       });
+
+      // ⏱ Wait for the DOM to settle, then check if multiplayer games are selected
       setTimeout(() => {
         const controllerOption = document.getElementById("controller-option");
+        const controllerCheckbox = document.getElementById("addController");
+
         const hasMultiplayer = Array.from(document.querySelectorAll('.game-checkbox')).some(input =>
           input.checked && input.closest('label')?.dataset.multiplayer === 'true'
         );
+
         if (hasMultiplayer) {
           controllerOption?.classList.remove("hidden");
-          if (getControllerQty() === 0) showToast("Add a controller for 2 Player");
+
+          if (!controllerCheckbox?.checked) {
+            showToast("Add a controller for 2 Player");
+          }
         } else {
           controllerOption?.classList.add("hidden");
-          document.getElementById("controllerQty").textContent = "0";
-          document.getElementById("addController").value = "0";
-          document.getElementById("controllerAddBtn").classList.remove("hidden");
-          document.getElementById("controllerQtySelector").style.display = "none";
-          updateSummary();
+          if (controllerCheckbox) controllerCheckbox.checked = false;
         }
-      }, 100);
+      }, 100); // Short delay ensures updated DOM state
     });
 
     // 🆕 Setup dynamic flatpickr minDate
@@ -1532,30 +1530,6 @@
       "Mandsaur": 49
     };
 
-    // ── Controller quantity helpers ──
-    const MAX_CONTROLLERS = 2;
-    function changeControllerQty(delta) {
-      const qtyEl = document.getElementById("controllerQty");
-      const hiddenEl = document.getElementById("addController");
-      const addBtn = document.getElementById("controllerAddBtn");
-      const qtySelector = document.getElementById("controllerQtySelector");
-      let qty = parseInt(qtyEl?.textContent || "0");
-      qty = Math.min(MAX_CONTROLLERS, Math.max(0, qty + delta));
-      if (qtyEl) qtyEl.textContent = qty;
-      if (hiddenEl) hiddenEl.value = qty;
-      if (qty === 0) {
-        addBtn?.classList.remove("hidden");
-        if (qtySelector) qtySelector.style.display = "none";
-      } else {
-        addBtn?.classList.add("hidden");
-        if (qtySelector) qtySelector.style.display = "flex";
-      }
-      updateSummary();
-    }
-    function getControllerQty() {
-      return parseInt(document.getElementById("addController")?.value || "0");
-    }
-
     function updateSummary() {
       const plan = localStorage.getItem("selectedRentalPlan") || "hourly";
       const bookingDate = document.getElementById("booking-date")?.value || "";
@@ -1602,14 +1576,22 @@
 
 
 
-      // Controller pricing — ₹100 per controller
-      const controllerQty = getControllerQty();
-      let controllerCharge = controllerQty * 100;
+      // Controller pricing – dynamic based on plan
+      const addController = document.getElementById("addController")?.checked;
+      let controllerCharge = 0;
+      if (addController) {
+        if (plan === "hourly") controllerCharge = 29 * (hours || 2); // assume 2 hrs min if missing
+        else if (plan === "day") controllerCharge = 99;
+        else if (plan === "night") controllerCharge = 99;
+      }
+
+      // Update controller price text dynamically
       try {
         const controllerText = document.getElementById("controller-price-text");
         if (controllerText) {
-          if (controllerQty === 0) controllerText.textContent = `₹0`;
-          else controllerText.textContent = `₹${controllerCharge} (${controllerQty} × ₹100)`;
+          if (plan === "hourly") controllerText.textContent = `₹29/hr`;
+          else if (plan === "day") controllerText.textContent = `₹99`;
+          else if (plan === "night") controllerText.textContent = `₹99`;
         }
       } catch (e) {
         console.error("Controller price update error:", e);
@@ -1704,7 +1686,7 @@
     <div class="mb-1 text-black font-semibold">Price Breakdown:</div>
     <div>Plan Price: ₹${planPrice}</div>
     ${gameBreakdown.join("")}
-    ${controllerCharge > 0 ? `<div>Extra Controllers (${getControllerQty()}×): ₹${controllerCharge}</div>` : ''}
+    ${controllerCharge > 0 ? `<div>Extra Controller: ₹${controllerCharge}</div>` : ''}
     <div>Delivery, Installation & Pick Up: ₹${deliveryCharge}</div>
     ${couponDiscount > 0 ? `<div class='text-green-600'>Coupon Discount: -₹${couponDiscount}</div>` : ''}
     ${referralDiscount > 0 ? `<div class='text-green-600'>Gift Card Discount: -₹${referralDiscount}</div>` : ''}
@@ -1793,14 +1775,13 @@
       );
 
       // ✅ Reset controller
+      const controllerCheckbox = document.getElementById("addController");
       const controllerOption = document.getElementById("controller-option");
       const controllerText = document.getElementById("controller-price-text");
-      if (document.getElementById("controllerQty")) document.getElementById("controllerQty").textContent = "0";
-      if (document.getElementById("addController")) document.getElementById("addController").value = "0";
-      if (document.getElementById("controllerAddBtn")) document.getElementById("controllerAddBtn").classList.remove("hidden");
-      if (document.getElementById("controllerQtySelector")) document.getElementById("controllerQtySelector").style.display = "none";
-      if (controllerOption) controllerOption.classList.add("hidden");
-      if (controllerText) controllerText.textContent = "₹0";
+
+      if (controllerCheckbox) controllerCheckbox.checked = false;
+      if (controllerOption) controllerOption.classList.add("hidden"); // hide if no multiplayer
+      if (controllerText) controllerText.textContent = "₹99"; // reset default price
 
       // ✅ Reset multiplayer toggle
       const multiplayerToggle = document.getElementById("multiplayerToggle");
@@ -1965,7 +1946,7 @@
 
       const couponCode = document.getElementById("couponCode")?.value || "";
       const referralCode = document.getElementById("referralCodeInput")?.value || "";
-      const controllerAdded = getControllerQty() > 0;
+      const controllerAdded = document.getElementById("addController")?.checked || false;
       const refNumber = generateReferenceNumber();
 
       const customerName = document.getElementById("name")?.value || "";
